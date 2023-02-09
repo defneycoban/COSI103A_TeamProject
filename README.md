@@ -7,8 +7,8 @@ This is for our team python project
 - Zev Ross
 - Eliora Kruman
 
-<code>
-'''python
+
+```python
 print("hellow world")
-'''
-</code>
+```
+
