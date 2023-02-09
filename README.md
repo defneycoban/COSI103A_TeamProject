@@ -8,6 +8,6 @@ This is for our team python project
   - Zev Ross
   - Eliora Kruman
 
-'''
+'''python
 print("hellow world")
 '''
