@@ -1,4 +1,5 @@
-.env
+# tells the file to ignore the pikeys
+.env 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
