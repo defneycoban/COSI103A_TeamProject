@@ -10,6 +10,7 @@ This is for our team python project PA02
 
 ```python
 print("hellow world")
-print("hallo")
+print("hallo ^-^")
 ```
 
+-This is a test
