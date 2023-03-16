@@ -1,4 +1,4 @@
-"""
+'''
 Demo code for interacting with GPT-3 in Python.
 
 To run this you need to 
@@ -9,14 +9,14 @@ To run this you need to
 
 On Mac
 % pip3 install openai
-% export APIKEY="......."  # in bash
+% export APIKEY='.......'  # in bash
 % python3 gpt.py
 
 On Windows:
 % pip install openai
-% $env:APIKEY="....." # in powershell
+% $env:APIKEY='.....' # in powershell
 % python gpt.py
-"""
+'''
 import os
 import openai
 
@@ -31,22 +31,37 @@ class GPT:
         openai.api_key = apikey  # os.environ.get('APIKEY')
 
         # Set up the model and prompt
-        self.model_engine = "text-davinci-003"
+        self.model_engine = 'text-davinci-003'
 
     def get_response(self, prompt):
         '''Generate a GPT response'''
         completion = openai.Completion.create(
-            engine=self.model_engine,
-            prompt=prompt,
-            max_tokens=1024,
-            n=1,
-            stop=None,
-            temperature=0.8,
+            engine = self.model_engine,
+            prompt = prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
+
+    # Zev's method
+    def get_encyclopedia_entry(self, prompt):
+        '''The user inputs a subject, and gpt returns a brief summary of it.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'Give a brief summary on the following topic: ' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
         )
 
         response = completion.choices[0].text
         return response
 
 
-if __name__ == "__main__":
-    g = GPT(os.environ.get("APIKEY"))
+if __name__ == '__main__':
+    g = GPT(os.environ.get('APIKEY'))
