@@ -62,17 +62,17 @@ def gptdemo():
     else:
         return render_template('gptdemo_prompt.html')
     
-@app.route('/summary', methods=['GET', 'POST'])
+@app.route('/setting', methods=['GET', 'POST'])
 def summary():
     ''' handle a get request by sending a form 
         and a post request by returning the GPT response
     '''
     if request.method == 'POST':
         prompt = request.form['prompt']
-        answer = gptAPI.get_encyclopedia_entry(prompt)
+        answer = gptAPI.get_setting(prompt)
         return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
     else:
-        return render_template('gptdemo_prompt_summary.html')
+        return render_template('gptdemo_prompt_setting.html')
 
 @app.route('/compare', methods=['GET', 'POST'])
 def compare():
