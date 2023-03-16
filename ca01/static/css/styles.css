@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
 
 * {
-  font-family: "Rubik", Arial, sans-serif
+  font-family: "Rubik", Arial, sans-serif;
+}
+
+:root {
+  --input-accent: #96a8b9;
+  --input-focus: #7dc0ff;
 }
 
 html,
@@ -84,13 +89,26 @@ body {
   width: 100px;
 }
 
-textarea {
+.input {
   border-radius: 7px;
-  border: 3px solid #777777;
-  width: 400px;
-  resize: vertical;
+  border: 3px solid var(--input-accent);
+  padding: 5px;
+  transition: 0.2s ease-in-out;
 }
 
-a{
-  font-size:22px;
+.input:focus {
+  border: 5px solid var(--input-focus);
+  outline: none;
+}
+
+textarea {
+  border-radius: 7px;
+  border: 3px solid var(--input-accent);
+  width: 400px;
+  resize: vertical;
+  padding: 5px;
+}
+
+a {
+  font-size: 22px;
 }
