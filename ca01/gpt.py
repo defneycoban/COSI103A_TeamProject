@@ -64,7 +64,7 @@ class GPT:
     
     #Eliora's method
     def villain(self, prompt):
-        '''The user inputs a topic, and gpt returns a character class.'''
+        '''The user inputs one or more characters, and gpt returns a villain.'''
         completion = openai.Completion.create(
             engine = self.model_engine,
             prompt = 'What would be a good Dungeons and Dragons monster to fight against for:' + prompt,
