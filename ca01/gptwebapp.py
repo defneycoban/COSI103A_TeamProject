@@ -58,7 +58,7 @@ def gptdemo():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.get_response(prompt)
-        return render_template('gdpdemo_result.html', prompt = prompt, answer = answer)
+        return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
         # return f'''
         # <h1>GPT Demo</h1>
         # <pre style="bgcolor:yellow">{prompt}</pre>
