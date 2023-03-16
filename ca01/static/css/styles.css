@@ -132,6 +132,10 @@ a {
   font-size: 20px;
 }
 
-li{
+li {
   font-size: 18px;
+}
+
+pre {
+  white-space: pre-wrap;
 }
