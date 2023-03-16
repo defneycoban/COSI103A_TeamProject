@@ -122,27 +122,9 @@ def compare():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.compare_these(prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('compare')}> make another comparison</a>
-        <br>
-        <a href={url_for ('index')}> go to the main page</a>
-        '''
+        return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
     else:
-        return '''
-        <h2>GPT Comparison</h2>
-        <p>Enter two topics below, and hit submit for a comparison.</p>
-        <form method="post">
-            <input name="prompt" type="text" placeholder="Example: Monkeys and cats">
-            <input type=submit value="get response">
-        </form>
-        '''
+        return render_template('gptdemo_prompt_comparison.html')
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
