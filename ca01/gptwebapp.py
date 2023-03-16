@@ -143,6 +143,66 @@ def compare():
             <input type=submit value="get response">
         </form>
         '''
+    
+@app.route('/joke', methods=['GET', 'POST'])
+def joke():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.joke(prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the answer in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('joke')}> tell another joke</a>
+        <br>
+        <a href={url_for ('index')}> go to the main page</a>
+        '''
+    else:
+        return '''
+        <h2>GPT Comparison</h2>
+        <p>Enter a topic below, and hit submit to see what joke GPT comes up with!</p>
+        <form method="post">
+            <input name="prompt" type="text" placeholder="Example: Monkeys in space">
+            <input type=submit value="get response">
+        </form>
+        '''
+    
+@app.route('/story', methods=['GET', 'POST'])
+def story():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.story(prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the answer in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('story')}> tell another story</a>
+        <br>
+        <a href={url_for ('index')}> go to the main page</a>
+        '''
+    else:
+        return '''
+        <h2>GPT Comparison</h2>
+        <p>Enter a topic below, and hit submit to see what story GPT comes up with!</p>
+        <form method="post">
+            <input name="prompt" type="text" placeholder="Example: Monkeys in space">
+            <input type=submit value="get response">
+        </form>
+        '''   
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(

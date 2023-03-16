@@ -76,6 +76,36 @@ class GPT:
 
         response = completion.choices[0].text
         return response
+    
+    # Eliora's second method
+    def joke(self, prompt):
+        '''The user inputs a topic, and gpt returns a joke.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'Tell me a joke about:' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
+    
+    # Eliora's third method
+    def story(self, prompt):
+        '''The user inputs a topic, and gpt returns a story.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'Tell me a story about:' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
 
 
 if __name__ == '__main__':
