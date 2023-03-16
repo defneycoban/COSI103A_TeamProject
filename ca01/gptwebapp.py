@@ -35,6 +35,8 @@ def index():
     return f'''
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
+        <h1>GPT Summary</h1>
+        <a href="{url_for('summary')}">Get a summary of a topic</a>
     '''
 
 
@@ -55,6 +57,8 @@ def gptdemo():
         Here is the answer in "pre" mode:
         <pre style="border:thin solid black">{answer}</pre>
         <a href={url_for('gptdemo')}> make another query</a>
+        <br>
+        <a href={url_for ('index')}> go to the main page</a>
         '''
     else:
         return '''
@@ -64,11 +68,34 @@ def gptdemo():
             <textarea name="prompt"></textarea>
             <p><input type=submit value="get response">
         </form>
+        '''
+    
+@app.route('/summary', methods=['GET', 'POST'])
+def summary():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.get_encyclopedia_entry(prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the answer in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the answer in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('summary')}> make another query</a>
         <br>
+        <a href={url_for ('index')}> go to the main page</a>
+        '''
+    else:
+        return '''
         <h2>GPT summary</h2>
         <p>Enter a topic below, and hit submit for a summary.</p>
         <form method="post">
-            <input name="prompt" type="text" placeholder="Example: Brandies University">
+            <input name="prompt" type="text" placeholder="Example: Brandeis University">
             <input type=submit value="get response">
         </form>
         '''
