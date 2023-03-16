@@ -2,7 +2,29 @@
 
 <p style="display: none">{% block title %}Team{% endblock %}</p>
 <h1>Introducing... ^-^</h1>
-<p>bio description, 1 per member</p>
-<h2>insert team photo</h2>
+<div class="container">
+  <img
+    src="{{url_for('static', filename='placeholder.jpg')}}"
+    alt="Group picture!"
+    class="big-img" />
+</div>
+<div class="container">
+  <p class="caption">This is our team. aren't we cool?</p>
+</div>
+<div class="container">
+  <!-- copy paste from here until the next comment, and just replace all the "zev" stuff with your own stuff! -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='zev.png')}}"
+      alt="Zev"
+      class="profile" />
+    <p class="name">Zev</p>
+    <p class="description">
+      Zev is a Junior at Brandeis University. He sure loves css!
+    </p>
+    <a href="{{url_for('summary')}}" class="prompt-link">Zev's prompt</a>
+  </div>
+  <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+</div>
 
 {% endblock %}
