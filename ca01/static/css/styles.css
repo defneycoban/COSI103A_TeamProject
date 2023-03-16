@@ -109,6 +109,25 @@ textarea {
   padding: 5px;
 }
 
+textarea:focus {
+  border: 5px solid var(--input-focus);
+  outline: none;
+}
+
+input[type="submit"] {
+  background: #b2cae1;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background: #9ab3ca;
+}
+
 a {
   font-size: 22px;
 }
