@@ -48,11 +48,11 @@ class GPT:
         return response
 
     # Zev's method
-    def get_encyclopedia_entry(self, prompt):
+    def get_setting(self, prompt):
         '''The user inputs a subject, and gpt returns a brief summary of it.'''
         completion = openai.Completion.create(
             engine = self.model_engine,
-            prompt = 'Give a brief summary on the following topic: ' + prompt,
+            prompt = 'Give a dnd setting for the following character(s): ' + prompt,
             max_tokens = 1024,
             n = 1,
             stop = None,
