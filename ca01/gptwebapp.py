@@ -64,6 +64,7 @@ def gptdemo():
             <textarea name="prompt"></textarea>
             <p><input type=submit value="get response">
         </form>
+        <br>
         <h2>GPT summary</h2>
         <p>Enter a topic below, and hit submit for a summary.</p>
         <form method="post">
