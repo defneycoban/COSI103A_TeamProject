@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>{% block title %}GPT Villain{% endblock %}</h1>
+<p>Enter a character or multiple characters below, and press submit to see what villain they're facing! The more details, the better GPT's response.</p>
+<form method="post">
+  <input name="prompt" type="text" placeholder="Example: Brandeis University" />
+  <input type="submit" value="get response" />
+</form>
+
+{% endblock %}
