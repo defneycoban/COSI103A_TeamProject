@@ -72,14 +72,15 @@ def gptdemo():
         # <a href={url_for ('index')}> go to the main page</a>
         # '''
     else:
-        return '''
-        <h1>GPT Demo App</h1>
-        Enter your query below
-        <form method="post">
-            <textarea name="prompt"></textarea>
-            <p><input type=submit value="get response">
-        </form>
-        '''
+        return render_template('gptdemo_prompt.html')
+        # return '''
+        # <h1>GPT Demo App</h1>
+        # Enter your query below
+        # <form method="post">
+        #     <textarea name="prompt"></textarea>
+        #     <p><input type=submit value="get response">
+        # </form>
+        # '''
     
 @app.route('/summary', methods=['GET', 'POST'])
 def summary():
