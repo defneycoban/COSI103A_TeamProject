@@ -49,4 +49,4 @@ class GPT:
 
 
 if __name__ == "__main__":
-    print(os.environ.get("APIKEY"))
+    g = GPT(os.environ.get("APIKEY"))
