@@ -86,3 +86,7 @@ textarea {
   width: 400px;
   resize: vertical;
 }
+
+a{
+  font-size:22px;
+}
