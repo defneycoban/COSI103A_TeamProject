@@ -25,6 +25,17 @@
     <a href="{{url_for('summary')}}" class="prompt-link">Zev's prompt</a>
   </div>
   <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='eliora.jpeg')}}"
+      alt="Eliora"
+      class="profile" />
+    <p class="name">Eliora</p>
+    <p class="description">
+      Eliora is a Sophomore at Brandeis University. She likes playing DnD in a bad French accent!
+    </p>
+    <a href="{{url_for('summary')}}" class="prompt-link">Zev's prompt</a>
+  </div>
 </div>
 
 {% endblock %}
