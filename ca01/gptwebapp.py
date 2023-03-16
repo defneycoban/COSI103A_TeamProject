@@ -29,11 +29,40 @@ gptAPI = GPT(os.environ.get('APIKEY'))
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
 
 @app.route('/')
+def main():
+    ''' displays links to index, about, and team '''
+    return f'''
+        <h1>Index</h1>
+        <a href="{url_for('index')}">Index</a>
+        <h1>About</h1>
+        <a href="{url_for('about')}">About</a>
+        <h1>Team Bios</h1>
+        <a href="{url_for('team')}">Team</a>
+        '''
+
+@app.route('/index')
 def index():
     ''' display a link to the general query page '''
     print('processing / route')
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    '''describes our project'''
+    return f'''
+        <h1>What does our program do?</h1>
+        <br>
+        <h2>How does it work?</h2>
+        '''
+
+@app.route('/team')
+def team():
+    '''team bios'''
+    return f'''
+        <h1>Introducing... ^-^</h1>
+        <p>bio description, 1 per member</p>
+        <h2>insert team photo</h2>
+        '''
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
