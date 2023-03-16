@@ -90,27 +90,29 @@ def summary():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.get_encyclopedia_entry(prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('summary')}> make another summary</a>
-        <br>
-        <a href={url_for ('index')}> go to the main page</a>
-        '''
+        return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
+        # return f'''
+        # <h1>GPT Demo</h1>
+        # <pre style="bgcolor:yellow">{prompt}</pre>
+        # <hr>
+        # Here is the answer in text mode:
+        # <div style="border:thin solid black">{answer}</div>
+        # Here is the answer in "pre" mode:
+        # <pre style="border:thin solid black">{answer}</pre>
+        # <a href={url_for('summary')}> make another summary</a>
+        # <br>
+        # <a href={url_for ('index')}> go to the main page</a>
+        # '''
     else:
-        return '''
-        <h2>GPT summary</h2>
-        <p>Enter a topic below, and hit submit for a summary.</p>
-        <form method="post">
-            <input name="prompt" type="text" placeholder="Example: Brandeis University">
-            <input type=submit value="get response">
-        </form>
-        '''
+        return render_template('gptdemo_prompt_summary.html')
+        # return '''
+        # <h2>GPT summary</h2>
+        # <p>Enter a topic below, and hit submit for a summary.</p>
+        # <form method="post">
+        #     <input name="prompt" type="text" placeholder="Example: Brandeis University">
+        #     <input type=submit value="get response">
+        # </form>
+        # '''
 
 @app.route('/compare', methods=['GET', 'POST'])
 def compare():
