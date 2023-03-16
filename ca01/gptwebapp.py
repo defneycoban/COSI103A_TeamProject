@@ -31,14 +31,8 @@ app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
 @app.route('/')
 def main():
     ''' displays links to index, about, and team '''
-    return f'''
-        <h1>Index</h1>
-        <a href="{url_for('index')}">Index</a>
-        <h1>About</h1>
-        <a href="{url_for('about')}">About</a>
-        <h1>Team Bios</h1>
-        <a href="{url_for('team')}">Team</a>
-        '''
+    # To edit the webpages, open the linked .html file in the 'templates' folder
+    return render_template('home.html')
 
 @app.route('/index')
 def index():
@@ -49,20 +43,12 @@ def index():
 @app.route('/about')
 def about():
     '''describes our project'''
-    return f'''
-        <h1>What does our program do?</h1>
-        <br>
-        <h2>How does it work?</h2>
-        '''
+    return render_template('about.html')
 
 @app.route('/team')
 def team():
     '''team bios'''
-    return f'''
-        <h1>Introducing... ^-^</h1>
-        <p>bio description, 1 per member</p>
-        <h2>insert team photo</h2>
-        '''
+    return render_template('team.html')
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
@@ -72,18 +58,19 @@ def gptdemo():
     if request.method == 'POST':
         prompt = request.form['prompt']
         answer = gptAPI.get_response(prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('gptdemo')}> make another query</a>
-        <br>
-        <a href={url_for ('index')}> go to the main page</a>
-        '''
+        return render_template('gdpdemo_result.html', prompt = prompt, answer = answer)
+        # return f'''
+        # <h1>GPT Demo</h1>
+        # <pre style="bgcolor:yellow">{prompt}</pre>
+        # <hr>
+        # Here is the answer in text mode:
+        # <div style="border:thin solid black">{answer}</div>
+        # Here is the answer in "pre" mode:
+        # <pre style="border:thin solid black">{answer}</pre>
+        # <a href={url_for('gptdemo')}> make another query</a>
+        # <br>
+        # <a href={url_for ('index')}> go to the main page</a>
+        # '''
     else:
         return '''
         <h1>GPT Demo App</h1>

@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock %}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}" />
   </head>
   <body>
-    {% block content %} {% endblock %}
-    <!-- <h1>GPT Demo</h1>
-    <a href="{{gpt_url}}">Ask questions to GPT</a>
-    <h1>GPT Summary</h1>
-    <a href="{{summary_url}}">Get a summary of a topic</a> -->
+    <div class="content-div">{% block content %} {% endblock %}</div>
   </body>
 </html>

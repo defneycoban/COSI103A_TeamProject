@@ -1,0 +1,14 @@
+{% extends 'basic.html' %} {% block content %}
+
+<h1>{% block title %}GPT Demo{% endblock %}</h1>
+<pre>{{prompt}}</pre>
+<hr />
+<p>Here is the answer in text mode:</p>
+<div style="border: thin solid black">{{answer}}</div>
+<p>Here is the answer in "pre" mode:</p>
+<pre style="border: thin solid black">{{answer}}</pre>
+<a href="{{url_for('gptdemo')}}"> make another query</a>
+<br />
+<a href="{{url_for('index')}}"> go to the main page</a>
+
+{% endblock %}
