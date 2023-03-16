@@ -18,7 +18,7 @@ On Windows:
 % $env:APIKEY="....." # in powershell
 % python gptwebapp.py
 '''
-from flask import request,redirect,url_for,Flask
+from flask import request, render_template, url_for, Flask
 from gpt import GPT
 import os
 
@@ -32,12 +32,7 @@ app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
 def index():
     ''' display a link to the general query page '''
     print('processing / route')
-    return f'''
-        <h1>GPT Demo</h1>
-        <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
-        <h1>GPT Summary</h1>
-        <a href="{url_for('summary')}">Get a summary of a topic</a>
-    '''
+    return render_template('index.html')
 
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
