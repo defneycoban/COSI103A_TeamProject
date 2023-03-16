@@ -63,7 +63,7 @@ def gptdemo():
         return render_template('gptdemo_prompt.html')
     
 @app.route('/setting', methods=['GET', 'POST'])
-def summary():
+def setting():
     ''' handle a get request by sending a form 
         and a post request by returning the GPT response
     '''
@@ -73,18 +73,6 @@ def summary():
         return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
     else:
         return render_template('gptdemo_prompt_setting.html')
-
-@app.route('/compare', methods=['GET', 'POST'])
-def compare():
-    ''' handle a get request by sending a form 
-        and a post request by returning the GPT response
-    '''
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        answer = gptAPI.compare_these(prompt)
-        return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
-    else:
-        return render_template('gptdemo_prompt_comparison.html')
     
 @app.route('/villain', methods=['GET', 'POST'])
 def villain():
