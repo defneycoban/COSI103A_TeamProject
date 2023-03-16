@@ -21,9 +21,11 @@ On Windows:
 from flask import request, redirect, url_for, Flask
 from gpt import GPT
 import os
+import openai
+import gpt
 
 app = Flask(__name__)
-gptAPI = GPT(os.environ.get("API_KEY"))
+gptAPI = GPT(os.environ.get("APIKEY"))
 
 # Set the secret key to some random bytes. Keep this really secret!
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
