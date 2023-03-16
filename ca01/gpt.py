@@ -61,6 +61,21 @@ class GPT:
 
         response = completion.choices[0].text
         return response
+    
+    # Eliora's method
+    def compare_these(self, prompt):
+        '''The user inputs two subjects, and gpt returns a comparison of them.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'What is similar and what is different about these two topics:' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
 
 
 if __name__ == '__main__':
