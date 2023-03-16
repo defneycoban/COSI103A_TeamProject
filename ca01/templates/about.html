@@ -2,7 +2,17 @@
 
 <p style="display: none">{% block title %}About{% endblock %}</p>
 <h1>What does our program do?</h1>
+<h2>Our program allows you to construct an RPG campaign.</h2>
+<h3>Use Defne's prompt to inspire your hero</h3>
+<a href="{{ url_for('villain') }}">Use Eliora's prompt to vanquish your villain</a>
+<h3>Use Zev's prompt to discover your surroundings</h3>
+<h3>Use Madina's prompt to begin your quest</h3>
 <br />
-<h2>How does it work?</h2>
-
+<h1>How does it work?</h1>
+<ul>
+    <li>Defne's prompt generates a hero</li>
+    <li>Eliora's prompt generates a villain</li>
+    <li>Zev's prompt generates a setting</li>
+    <li>Madina's prompt generates a quest</li>
+</ul>
 {% endblock %}
