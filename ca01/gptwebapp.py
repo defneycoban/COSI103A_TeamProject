@@ -23,7 +23,7 @@ from gpt import GPT
 import os
 
 app = Flask(__name__)
-gptAPI = GPT(os.environ.get("API_KEY"))
+gptAPI = GPT(os.environ.get('APIKEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
 app.secret_key = b'_5#y2L"F4Q789789uioujkkljkl...8z\n\xec]/'
@@ -45,7 +45,7 @@ def gptdemo():
     '''
     if request.method == 'POST':
         prompt = request.form['prompt']
-        answer = gptAPI.getResponse(prompt)
+        answer = gptAPI.get_response(prompt)
         return f'''
         <h1>GPT Demo</h1>
         <pre style="bgcolor:yellow">{prompt}</pre>
