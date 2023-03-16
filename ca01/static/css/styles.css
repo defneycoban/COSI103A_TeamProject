@@ -80,6 +80,9 @@ body {
   width: 100px;
 }
 
-a{
-  font-size: 22px;
+textarea {
+  border-radius: 7px;
+  border: 3px solid #777777;
+  width: 400px;
+  resize: vertical;
 }
