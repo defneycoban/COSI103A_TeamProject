@@ -1,9 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{% block title %}Index{% endblock %}</h1>
-<a href="{{url_for('index')}}">Index</a>
-<h1>About</h1>
-<a href="{{url_for('about')}}">About</a>
-<h1>Team Bios</h1>
-<a href="{{url_for('team')}}">Team</a>
+<h1>{% block title %}Home{% endblock %}</h1>
+<p>Welcome to our webapp! Here you can use many different functions of GPT.</p>
+<div class="nav">
+  <a href="{{url_for('index')}}">Index</a>
+  <a href="{{url_for('about')}}">About</a>
+  <a href="{{url_for('team')}}">Team</a>
+</div>
 {% endblock %}
