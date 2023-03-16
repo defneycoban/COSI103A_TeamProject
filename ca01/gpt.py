@@ -121,6 +121,20 @@ class GPT:
         response = completion.choices[0].text
         return response
 
+     # Madina's method
+    def quest(self, prompt):
+        '''The user inputs DnD character names/wish in which direction to head for the quest.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'What could be a DnD quest for:' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
 
 if __name__ == '__main__':
     g = GPT(os.environ.get('APIKEY'))
