@@ -1,18 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{% block title %}GPT Demo{% endblock %}</h1>
-<a href="{{ url_for('gptdemo') }}">Ask questions to GPT</a>
-<h1>GPT Summary</h1>
-<a href="{{ url_for('summary') }}">Get a summary of a topic</a>
-<h1>Comparison</h1>
-<a href="{{ url_for('compare') }}">Compare two topics</a>
+<a href="{{ url_for('gptdemo') }}">Inspire Your Hero</a>
 <br>
-<h1>Inspire Your Hero</h1>
-<a href="{{ url_for('gptdemo') }}">Generate hero</a>
-<h1>Vanquish Your Villain</h1>
-<a href="{{ url_for('villain') }}">Generate villain</a>
-<h1>Discover Your Surroundings</h1>
-<a href="{{ url_for('gptdemo') }}">Generate surroundings</a>
-<h1>Begin Your Quest</h1>
-<a href="{{ url_for('gptdemo') }}">Generate quest</a>
+<br>
+<a href="{{ url_for('villain') }}">Vanquish Your Villain</a>
+<br>
+<br>
+<a href="{{ url_for('gptdemo') }}">Discover Your Surroundings</a>
+<br>
+<br>
+<a href="{{ url_for('gptdemo') }}">Begin Your Quest</a>
 {% endblock %}
