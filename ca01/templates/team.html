@@ -2,12 +2,15 @@
 
 <p style="display: none">{% block title %}Team{% endblock %}</p>
 <h1>Introducing... ^-^</h1>
-<div class="container">
+<!-- 
+  I'm commenting this out until we take a picture.
+  
+  <div class="container">
   <img
     src="{{url_for('static', filename='placeholder.jpg')}}"
     alt="Group picture!"
     class="big-img" />
-</div>
+</div> -->
 <div class="container">
   <p class="caption">This is our team. aren't we cool?</p>
 </div>
@@ -32,7 +35,8 @@
       class="profile" />
     <p class="name">Eliora</p>
     <p class="description">
-      Eliora is a Sophomore at Brandeis University. She likes playing DnD in a bad French accent!
+      Eliora is a Sophomore at Brandeis University. She likes playing DnD in a
+      bad French accent!
     </p>
     <a href="{{url_for('villain')}}" class="prompt-link">Eliora's prompt</a>
   </div>
