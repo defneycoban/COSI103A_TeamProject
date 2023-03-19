@@ -40,6 +40,18 @@
     </p>
     <a href="{{url_for('villain')}}" class="prompt-link">Eliora's prompt</a>
   </div>
+    <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='madina.jpg')}}"
+      alt="Madina"
+      class="profile" />
+    <p class="name">Madina</p>
+    <p class="description">
+      Madina is a Sophomore at Brandeis University, and loves getting too much groceries that she can never finish!
+    </p>
+    <a href="{{url_for('setting')}}" class="prompt-link">Madina's prompt</a>
+  </div>
 </div>
 
 {% endblock %}
