@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>{% block title %}GPT Quest Generator{% endblock %}</h1>
+<p>Enter characters/scenario for DnD to generate the best quest possible! The more details, the better.</p>
+<form method="post">
+  <textarea class="input" name="prompt"></textarea>
+  <p><input type="submit" value="get response" /></p>
+</form>
+
+{% endblock %}
