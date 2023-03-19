@@ -52,6 +52,18 @@
     </p>
     <a href="{{url_for('quest')}}" class="prompt-link">Madina's prompt</a>
   </div>
+  <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='defne.jpeg')}}"
+      alt="Madina"
+      class="profile" />
+    <p class="name">Defne</p>
+    <p class="description">
+      Defne is a Sophomore at Brandeis University. She started playing DnD because she loves dragons!
+    </p>
+    <a href="{{url_for('hero')}}" class="prompt-link">Defne's prompt</a>
+  </div>
 </div>
 
 {% endblock %}

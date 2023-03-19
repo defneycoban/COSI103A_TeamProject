@@ -97,6 +97,18 @@ def quest():
         return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
     else:
         return render_template('gptdemo_prompt_quest.html')
+
+@app.route('/hero', methods=['GET', 'POST'])
+def hero():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = request.form['prompt']
+        answer = gptAPI.hero(prompt)
+        return render_template('gptdemo_result.html', prompt=prompt, answer=answer)
+    else:
+        return render_template('gptdemo_prompt_hero.html')
     
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(

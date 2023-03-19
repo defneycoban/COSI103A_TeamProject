@@ -92,5 +92,20 @@ class GPT:
         response = completion.choices[0].text
         return response
 
+    #Defne's method
+    def hero(self, prompt):
+        '''The user inputs a DnD character names/wish in which direction to head for the quest.'''
+        completion = openai.Completion.create(
+            engine = self.model_engine,
+            prompt = 'What would be a a good Dungeons and Dragons hero give that they are:' + prompt,
+            max_tokens = 1024,
+            n = 1,
+            stop = None,
+            temperature = 0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
+
 if __name__ == '__main__':
     g = GPT(os.environ.get('APIKEY'))

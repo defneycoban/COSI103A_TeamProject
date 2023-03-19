@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>{% block title %}GPT Hero Generator{% endblock %}</h1>
+<p>Enter qualities or characteristics you want to see in the hero of your quest!</p>
+<form method="post">
+  <textarea class="input" name="prompt"></textarea>
+  <p><input type="submit" value="get response" /></p>
+</form>
+
+{% endblock %}
+
