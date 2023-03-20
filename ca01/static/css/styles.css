@@ -19,8 +19,8 @@ body {
   margin: 2rem 15%;
 }
 
-.routes{
-  padding:10px;
+.routes {
+  padding: 10px;
 }
 
 .nav {
@@ -142,4 +142,11 @@ li {
 
 pre {
   white-space: pre-wrap;
+}
+
+.dnd {
+  height: 60vh;
+  width: auto;
+  border: 5px solid gray;
+  border-radius: 20px;
 }
