@@ -1,0 +1,1 @@
+# All sql commands should be done in this class. Print statements go in tracker.py

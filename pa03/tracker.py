@@ -1,0 +1,1 @@
+# All printing should be done in this class. Sql commands go in transactions.py
