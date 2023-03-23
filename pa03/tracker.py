@@ -1,4 +1,7 @@
 # All printing should be done in this class. Sql commands go in transactions.py
+import sys
+from transactions import Transactions
+
 
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
@@ -41,7 +44,7 @@ def process(arglist):
     else:
         print(arglist," is not implemented")
         #not implemented yet: print_usage() in tracker.py
-import sys
+
 
 
 # Created by Zev
