@@ -1,5 +1,6 @@
 # All sql commands should be done in this class. Print statements go in tracker.py
 
+# class and init method created by Zev
 class Transactions():
     ''' methods for obtaining transaction data '''
     def __init__(self):
