@@ -16,7 +16,6 @@ class Transactions():
         ''' return the transactions sorted by the given argument '''
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
-
     # created by Madina
     def show_transactions(self):
         ''' printing the transactions '''
