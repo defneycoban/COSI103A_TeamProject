@@ -1,5 +1,6 @@
-# All sql commands should be done in this class. Print statements go in tracker.py
+import sqlite3
 
+# All sql commands should be done in this class. Print statements go in tracker.py
 class Transactions():
     ''' methods for obtaining transaction data '''
 
@@ -11,3 +12,9 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
+    
+   
+
+   
+
+    
