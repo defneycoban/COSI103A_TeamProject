@@ -2,11 +2,11 @@
 import sys
 from transactions import Transactions
 
-tracker = Transactions('tracker.db')
+transaction = Transactions()
+
 
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
-    transaction = Transactions()
     if arglist==[]:
         #not implemented yet: print_usage() in tracker.py
         print("placeholder")
@@ -71,6 +71,6 @@ def read_eval():
 read_eval()
 
 # created by Madina
-tracker.show_transactions()
-tracker.add_transaction('001', 100.0, 'groceries', '2022-03-26', 'Bought groceries at the supermarket')
-tracker.delete_transaction('001')
+transaction.show_transactions()
+transaction.add_transaction('001', 100.0, 'groceries', '2022-03-26', 'Bought groceries at the supermarket')
+transaction.delete_transaction('001')

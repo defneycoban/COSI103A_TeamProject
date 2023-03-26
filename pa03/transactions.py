@@ -13,6 +13,8 @@ class Transactions():
         ''' return the transactions sorted by the given argument '''
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
+
+    # created by Madina
     def show_transactions(self):
         ''' printing the transactions '''
         self.c.execute("SELECT * FROM transactions")
@@ -20,6 +22,7 @@ class Transactions():
         for transaction in transactions:
             print(transaction)
 
+    # created by Madina
     def add_transaction(self, item, amount, category, date, description):
         '''adding a new transaction with all the required fields'''
         self.c.execute("INSERT INTO transactions (item, amount, category, date, description) VALUES (?, ?, ?, ?, ?)",
@@ -27,6 +30,7 @@ class Transactions():
         self.conn.commit()
         print("Transaction added successfully!")
 
+    # created by Madina
     def delete_transaction(self, item):
         '''deleting an existing transactions'''
         self.c.execute("DELETE FROM transactions WHERE item=?", (item,))
