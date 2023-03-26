@@ -2,7 +2,6 @@
 import sys
 from transactions import Transactions
 
-
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
     transaction = Transactions()
