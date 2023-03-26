@@ -2,6 +2,8 @@
 import sys
 from transactions import Transactions
 
+con= sqlite3.connect('tracker.db')
+cur = con.cursor()
 transaction = Transactions()
 
 
@@ -74,3 +76,7 @@ read_eval()
 transaction.show_transactions()
 transaction.add_transaction('001', 100.0, 'groceries', '2022-03-26', 'Bought groceries at the supermarket')
 transaction.delete_transaction('001')
+
+# and finally we commit our changes and close the connection
+con.commit()
+con.close()
