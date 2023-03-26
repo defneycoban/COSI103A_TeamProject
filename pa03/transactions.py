@@ -15,7 +15,6 @@ class Transactions():
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
     # created by Madina
-
     def show_transactions(self):
         ''' return all of the transactions as a list of dicts.'''
         return self.runQuery("SELECT rowid,* from todo",())
