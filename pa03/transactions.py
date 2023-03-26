@@ -6,7 +6,7 @@ cur = con.cursor()
 # All sql commands should be done in this class. Print statements go in tracker.py
 class Transactions():
     ''' methods for obtaining transaction data '''
-
+    # created by Zev
     def __init__(self):
         ''' initialize the database '''
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
