@@ -2,10 +2,11 @@
 import sys
 from transactions import Transactions
 
-transaction = Transactions()
 
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
+    transaction = Transactions()
+
     if arglist==[]:
         #not implemented yet: print_usage() in tracker.py
         print("placeholder")
