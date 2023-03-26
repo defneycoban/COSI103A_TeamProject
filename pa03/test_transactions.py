@@ -1,53 +1,38 @@
 # pytest tests for transactions.py
 from transactions import Transactions
 
-t = Transactions('test.db')
+def db():
+    return Transactions('test.db')
 
-def test_show_transactions(self):
-    # Add some transactions to the database
-    t.add({'title': 'Transaction 1', 'desc': 'Description 1', 'completed': False})
-    t.add({'title': 'Transaction 2', 'desc': 'Description 2', 'completed': True})
-    t.add({'title': 'Transaction 3', 'desc': 'Description 3', 'completed': False})
-    transactions = t.show_transactions()
+def test_add(db):
+    # add a transaction
+    db.add({'item #': 1, 'amount': 10.0, 'category': 'Food', 'date': '2022-03-26', 'description': 'Lunch'})
+    # check if it was added
+    rows = db.show_transactions()
+    assert len(rows) == 1
+    assert rows[0]['item #'] == 1
+    assert rows[0]['amount'] == 10.0
+    assert rows[0]['category'] == 'Food'
+    assert rows[0]['date'] == '2022-03-26'
+    assert rows[0]['description'] == 'Lunch'
 
-    assert len(transactions) == 3
-    assert transactions[0]['title'] == 'Transaction 1'
-    assert transactions[0]['desc'] == 'Description 1'
-    assert transactions[0]['completed'] == False
-    assert transactions[1]['title'] == 'Transaction 2'
-    assert transactions[1]['desc'] == 'Description 2'
-    assert transactions[1]['completed'] == True
-    assert transactions[2]['title'] == 'Transaction 3'
-    assert transactions[2]['desc'] == 'Description 3'
-    assert transactions[2]['completed'] == False
+def test_delete(db):
+    # add a transaction
+    db.add({'item #': 1, 'amount': 10.0, 'category': 'Food', 'date': '2022-03-26', 'description': 'Lunch'})
+    # delete the transaction
+    db.delete(1)
+    # check if it was deleted
+    rows = db.show_transactions()
+    assert len(rows) == 0
 
-    t.delete(1)
-    t.delete(2)
-    t.delete(3)
-    
-def test_add(self):
-    # Add a transaction to the database
-    t.add({'title': 'Transaction 1', 'desc': 'Description 1', 'completed': False})
-    # Get the list of transactions
-    transactions = t.show_transactions() 
-    # Verify that the transaction was added correctly
-    assert len(transactions) == 1
-    assert transactions[0]['title'] == 'Transaction 1'
-    assert transactions[0]['desc'] == 'Description 1'
-    assert transactions[0]['completed'] == False
-    
-    # Delete the transaction from the database
-    t.delete(1)
-    
-def test_delete(self):
-    # Add a transaction to the database
-    t.add({'title': 'Transaction 1', 'desc': 'Description 1', 'completed': False})
-    
-    # Delete the transaction from the database
-    t.delete(1)
-    
-    # Get the list of transactions
-    transactions = t.show_transactions()
-    
-    # Verify that the transaction was deleted correctly
-    assert len(transactions) == 0
+def test_show_transactions(db):
+    # add some transactions
+    db.add({'item #': 1, 'amount': 10.0, 'category': 'Food', 'date': '2022-03-26', 'description': 'Lunch'})
+    db.add({'item #': 2, 'amount': 5.0, 'category': 'Transport', 'date': '2022-03-26', 'description': 'Bus fare'})
+    db.add({'item #': 3, 'amount': 20.0, 'category': 'Shopping', 'date': '2022-03-27', 'description': 'Groceries'})
+    # check if all transactions are returned
+    rows = db.show_transactions()
+    assert len(rows) == 3
+    assert rows[0]['item #'] == 1
+    assert rows[1]['item #'] == 2
+    assert rows[2]['item #'] == 3
