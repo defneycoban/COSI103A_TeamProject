@@ -2,7 +2,6 @@
 import sys
 from transactions import Transactions
 
-
 transaction = Transactions()
 
 def process(arglist):
@@ -46,14 +45,28 @@ def process(arglist):
         print(arglist," is not implemented")
         #not implemented yet: print_usage() in tracker.py
 
-
+# Madina's method
+def print_usage():
+    ''' print an explanation of how to use this command '''
+    print('''usage:
+            transactions quit
+            transactions show transactions
+            transactions add transaction
+            transactions delete transaction
+            transactions summarize transactions by date
+            transactions summarize transactions by month
+            transactions summarize transactions by year
+            transactions summarize transactions by category
+            transactions print this menu
+            '''
+            )
 
 # Created by Zev
 def read_eval():
     ''' reads and evaluates input '''
     if len(sys.argv) == 1:
         # no arguments passed
-        # print_usage() (Madina's method)
+        print_usage() 
         args = []
         while args != ['']:
             args = input('>> ').split(' ')
