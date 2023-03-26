@@ -27,7 +27,7 @@ class Transactions():
     # created by Madina
     def delete(self,rowid):
         ''' delete a transaction '''
-        return self.runQuery("DELETE FROM todo WHERE rowid=(?)",(rowid,))
+        return self.runQuery("DELETE FROM TRANSACTIONS WHERE rowid=(?)",(rowid,))
 
    
 
