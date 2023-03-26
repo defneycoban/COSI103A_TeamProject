@@ -85,7 +85,7 @@ read_eval()
 
 # created by Madina
 transaction.show_transactions()
-transaction.add_transaction('001', 100.0, 'groceries', '2022-03-26', 'Bought groceries at the supermarket')
-transaction.delete_transaction('001')
+transaction.add('001', 100.0, 'groceries', '2022-03-26', 'Bought groceries at the supermarket')
+transaction.delete('001')
 
 

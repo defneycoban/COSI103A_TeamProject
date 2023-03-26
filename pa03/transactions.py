@@ -1,7 +1,5 @@
 import sqlite3
 
-con= sqlite3.connect('tracker.db')
-cur = con.cursor()
 
 # All sql commands should be done in this class. Print statements go in tracker.py
 class Transactions():
@@ -17,30 +15,21 @@ class Transactions():
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
     # created by Madina
+
     def show_transactions(self):
-        ''' printing the transactions '''
-        string = ""
-        self.c.execute("SELECT * FROM transactions")
-        transactions = self.c.fetchall()
-        transaction = [f"Item: {t[0]}, Amount: {t[1]}, Category: {t[2]}, Date: {t[3]}, Description: {t[4]}" for t in transactions]
-        return '\n'.join(transaction)
+        ''' return all of the transactions as a list of dicts.'''
+        return self.runQuery("SELECT rowid,* from todo",())
+    
+    # created by Madina
+    def add(self,item):
+        ''' create a transaction with all the fields needed and add it to the transactions table '''
+        return self.runQuery("INSERT INTO todo VALUES(?,?,?)",(item['title'],item['desc'],item['completed']))
 
     # created by Madina
-    def add_transaction(self, item, amount, category, date, description):
-        '''adding a new transaction with all the required fields'''
-        self.c.execute("INSERT INTO transactions (item, amount, category, date, description) VALUES (?, ?, ?, ?, ?)",
-            (item, amount, category, date, description))
-        self.conn.commit()
+    def delete(self,rowid):
+        ''' delete a transaction '''
+        return self.runQuery("DELETE FROM todo WHERE rowid=(?)",(rowid,))
 
-    # created by Madina
-    def delete_transaction(self, item):
-        '''deleting an existing transactions'''
-        self.c.execute("DELETE FROM transactions WHERE item=?", (item,))
-        self.conn.commit()
-
-# and finally we commit our changes and close the connection
-con.commit()
-con.close()
    
 
     
