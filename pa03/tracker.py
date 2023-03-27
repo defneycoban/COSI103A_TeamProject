@@ -64,7 +64,7 @@ def print_transactions(transactions):
         values = tuple(item.values()) #(item, amount, date, category, description)
         print("%s %s %s %s"%values)
 
-    
+
 
 # Created by Zev
 def read_eval():
