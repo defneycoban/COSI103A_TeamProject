@@ -53,7 +53,7 @@ class Transactions():
         return self.runQuery("DELETE FROM TRANSACTIONS WHERE rowid=(?)",(rowid,))
 
    # created by Defne
-    def runQuery(self, query, args):
+    def runQuery(self, query, tuple):
         '''execute a SQLite command and return the result as a list of dictionaries'''
         con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
         cur = con.cursor() 
