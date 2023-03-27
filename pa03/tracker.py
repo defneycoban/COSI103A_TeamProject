@@ -14,10 +14,10 @@ def process(arglist):
     elif arglist[0]=="show":
         print_transactions(transaction.show())
     elif arglist[0]=='add':
-        if len(arglist)!=5: #because there are 5 fields
+        if len(arglist)!=3: #because there are 3 fields
             print_usage()
         else:
-            dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]}
+            dictName = {'amount':arglist[1],'date':arglist[2],'description':arglist[3]}
             transaction.add(dictName)
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
