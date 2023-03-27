@@ -56,7 +56,21 @@ def print_usage():
             transactions print this menu
             '''
             )
-        
+
+# created by Defne
+def print_transactions(transactions):
+    ''' print the transaction items '''
+    if len(transactions) == 0:
+        print('no transactions to print')
+        return
+    print('\n')
+    print("%-10s %-10s %-20s %-30s %-20s"%('item #','amount','category','date','description'))
+    print('-'*90)
+    for item in transactions:
+        values = tuple(item.values()) #(item, amount, date, category, description)
+        print("%-10s %-10s %-20s %-30s %-20s"%values)
+
+    
 
 # Created by Zev
 def read_eval():
