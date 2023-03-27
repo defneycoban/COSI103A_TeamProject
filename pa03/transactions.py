@@ -14,10 +14,16 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         if(arg=='month'):
-            arg = arg[5:7]
+            return self.runQuery(f"SELECT rowid,* from transaction where substr(date,6,2)={arg} DESC",())   #change dictName when implemented
         if(arg=='year'):
-            arg = arg[0:4]
-        return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
+            return self.runQuery(f"SELECT rowid,* from transaction where substr(date,1,4)={arg} DESC",())
+        else:
+            return self.runQuery(f"SELECT rowid,* from transaction where date={arg} DESC",())
+        # if(arg=='month'):
+        #     arg = arg[5:7]
+        # if(arg=='year'):
+        #     arg = arg[0:4]
+        # return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
     # created by Madina
     def show_transactions(self):
