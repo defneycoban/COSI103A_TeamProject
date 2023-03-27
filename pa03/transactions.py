@@ -14,9 +14,9 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         if(arg=='month'):
-            arg = substr(arg, 6, 2)
+            arg = arg[5:7]
         if(arg=='year'):
-            arg = substr(arg, 1, 4)
+            arg = arg[0:4]
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
     # created by Madina
