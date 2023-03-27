@@ -32,6 +32,7 @@ def test_sort():
     assert rows[1]['description'] == 'Lunch'
     assert rows[2]['description'] == 'Bus fare'
 
+#Madina's method
 def test_add():
     db = Transactions()
     # add a transaction
@@ -43,6 +44,7 @@ def test_add():
     assert rows[0]['date'] == '2022-03-26'
     assert rows[0]['description'] == 'Lunch'
 
+#Madina's method
 def test_delete():
     db = Transactions()
     # add a transaction
@@ -53,6 +55,7 @@ def test_delete():
     rows = db.show_transactions()
     assert len(rows) == 0
 
+#Madina's method
 def test_show_transactions():
     db = Transactions()
     # add some transactions
