@@ -59,11 +59,11 @@ def print_transactions(transactions):
         print('no transactions to print')
         return
     print('\n')
-    print("%-10s %-10s %-20s %-30s %-20s"%('item #','amount','category','date','description'))
+    print("%-10s %-10s %-20s %-30s "%('item #','amount','date','description'))
     print('-'*90)
     for item in transactions:
         values = tuple(item.values()) #(item, amount, date, category, description)
-        print("%-10s %-10s %-20s %-30s %-20s"%values)
+        print("%-10s %-10s %-20s %-30s"%values)
 
     
 
