@@ -23,12 +23,14 @@ class Transactions():
     # created by Eliora
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
+        #version where user chooses month and that month is sorted
         if(arg=='month'):
-            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,6,2)={arg} DESC",())   #change dictName when implemented
+            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,6,2)={arg} DESC",())
         if(arg=='year'):
             return self.runQuery(f"SELECT rowid,* from transactions where substr(date,1,4)={arg} DESC",())
         else:
             return self.runQuery(f"SELECT rowid,* from transactions where date={arg} DESC",())
+        #version where all are shown sorted by month
         # if(arg=='month'):
         #     arg = arg[5:7]
         # if(arg=='year'):

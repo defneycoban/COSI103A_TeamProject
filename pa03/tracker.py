@@ -7,14 +7,14 @@ def process(arglist):
     ''' examine args and make appropriate calls to the database'''
     transaction = Transactions()
     
-    if arglist==[]:
+    if arglist==[]: #if no arguments are passed, print the options
         print_usage()
     elif arglist[0]=="quit":
         quit()
     elif arglist[0]=="show":
         print_transactions(transaction.show())
     elif arglist[0]=='add':
-        if len(arglist)!=3: #because there are 3 fields
+        if len(arglist)!=3: #because there are 3 fields that must be added each time
             print_usage()
         else:
             dictName = {'amount':arglist[1],'date':arglist[2],'description':arglist[3]}
@@ -25,14 +25,14 @@ def process(arglist):
         else:
             transaction.delete(arglist[1])
     elif arglist[0]=="summarizeDates":
-        print_transactions(transaction.sort('date'))
+        print_transactions(transaction.sort('date'))    #should the user input a date? or should it be sorted by date?
     elif arglist[0]=="summarizeMonths":
         print_transactions(transaction.sort('month'))
     elif arglist[0]=="summarizeYears":
         print_transactions(transaction.sort('year'))
     elif arglist[0]=="print":
         print_usage()
-    else:
+    else:   #if the user inputs something that is not an option
         print(arglist," is not implemented")
         print_usage()
 
