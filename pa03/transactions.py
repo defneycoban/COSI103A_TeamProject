@@ -45,12 +45,12 @@ class Transactions():
     # created by Madina
     def add(self,item):
         ''' create a transaction with all the fields needed and add it to the transactions table '''
-        return self.runQuery("INSERT INTO TRANSACTIONS VALUES(?,?,?)",(item['item #'],item['amount'],item['category'],item['date'],item['description']))
+        return self.runQuery("INSERT INTO transactions VALUES(?,?,?)",(item['item #'],item['amount'],item['category'],item['date'],item['description']))
 
     # created by Madina
     def delete(self,rowid):
         ''' delete a transaction '''
-        return self.runQuery("DELETE FROM TRANSACTIONS WHERE rowid=(?)",(rowid,))
+        return self.runQuery("DELETE FROM transactions WHERE rowid=(?)",(rowid,))
 
    # created by Defne
     def runQuery(self, query, tuple):
