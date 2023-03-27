@@ -34,6 +34,25 @@ class Transactions():
         ''' delete a transaction '''
         return self.runQuery("DELETE FROM TRANSACTIONS WHERE rowid=(?)",(rowid,))
 
+   # created by Defne
+    def runQuery(self, query, args):
+        '''execute a SQLite command and return the result as a list of dictionaries'''
+        self.c.execute(query, args)
+        rows = self.c.fetchall()
+        return self.toDict(rows) #todict(rows)
+    
+   #created by Defne
+    def toDict(t):
+        ''' t is a tuple that gets converted to a dictionary'''
+        transaction = {
+        'item': t[0],
+        'amount': t[1],
+        'category': t[2],
+        'date': t[3],
+        'description': t[4]
+        }
+        return transaction
+    
    
 
     
