@@ -12,29 +12,24 @@ def process(arglist):
     elif arglist[0]=="quit":
         quit()
     elif arglist[0]=="show":
-        #not implemented yet: print_transactions(transaction.show()) in tracker.py, transaction.show() in transactions.py
-        print("placeholder")
+        print_transactions(transaction.show())
     elif arglist[0]=='add':
         if len(arglist)!=5: #because there are 5 fields
             print_usage()
         else:
             dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]} in tracker.py #dictName in transactions.py
-            #not implemented yet: transaction.add(dictName) in transactions.py, dictName in transactions.py
-            print("placeholder")
+            transaction.add(dictName)
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
             print_usage()
         else:
             transaction.delete(arglist[1])
     elif arglist[0]=="summarizeDates":
-        #not implemented yet: print_transactions(dictName = transaction.sort(date)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('date'))
     elif arglist[0]=="summarizeMonths":
-        #not implemented yet: print_transactions(dictName = transaction.sort(month)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('month'))
     elif arglist[0]=="summarizeYears":
-        #not implemented yet: print_transactions(dictName = transaction.sort(year)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('year'))
     elif arglist[0]=="print":
         print_usage()
     else:
