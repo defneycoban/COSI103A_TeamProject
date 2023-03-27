@@ -62,3 +62,8 @@ def test_show_transactions():
     # check if all transactions are returned
     rows = db.show_transactions()
     assert len(rows) == 3
+
+
+
+
+
