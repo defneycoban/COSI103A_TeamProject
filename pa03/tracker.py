@@ -47,7 +47,6 @@ def print_usage():
             transactions summarize transactions by date
             transactions summarize transactions by month
             transactions summarize transactions by year
-            transactions summarize transactions by category
             transactions print this menu
             '''
             )
