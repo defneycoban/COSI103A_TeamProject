@@ -20,7 +20,7 @@ class Transactions():
     def __init__(self):
         ''' initialize the database '''
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
-                      (item int, amount int, date text, description text)''', ())
+                      (amount int, date text, description text)''', ())
     
     # created by Eliora
     def sort(self, arg):
@@ -45,7 +45,7 @@ class Transactions():
     # created by Madina
     def add(self,item):
         ''' create a transaction with all the fields needed and add it to the transactions table '''
-        return self.runQuery("INSERT INTO transactions VALUES(?,?,?)",(item['item #'],item['amount'],item['category'],item['date'],item['description']))
+        return self.runQuery("INSERT INTO transactions VALUES(?,?,?)",(item['amount'],item['category'],item['date'],item['description']))
 
     # created by Madina
     def delete(self,rowid):
