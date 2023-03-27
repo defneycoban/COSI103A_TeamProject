@@ -20,7 +20,7 @@ class Transactions():
     def __init__(self):
         ''' initialize the database '''
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
-                      (item int, amount int, date text, description text))''', ())
+                      (item int, amount int, date text, description text)''', ())
     
     # created by Eliora
     def sort(self, arg):

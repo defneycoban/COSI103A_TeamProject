@@ -1,6 +1,5 @@
 # pytest tests for transactions.py
 from transactions import Transactions
-
 #Eliora's test
 def test_sort():
     db = Transactions()
