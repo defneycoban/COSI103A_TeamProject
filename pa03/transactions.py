@@ -10,6 +10,7 @@ class Transactions():
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
                       (item int, amount int, date text, description text))''', ())
     
+    # created by Eliora
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
