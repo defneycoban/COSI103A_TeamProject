@@ -1,5 +1,17 @@
 import sqlite3
+import os
 
+#created by Defne
+def toDict(t):
+    ''' t is a tuple that gets converted to a dictionary'''
+    transaction = {
+    'item': t[0],
+    'amount': t[1],
+    'category': t[2],
+    'date': t[3],
+    'description': t[4]
+    }
+    return transaction
 
 # All sql commands should be done in this class. Print statements go in tracker.py
 class Transactions():
@@ -43,21 +55,13 @@ class Transactions():
    # created by Defne
     def runQuery(self, query, args):
         '''execute a SQLite command and return the result as a list of dictionaries'''
-        self.c.execute(query, args)
-        rows = self.c.fetchall()
-        return self.toDict(rows) #todict(rows)
-    
-   #created by Defne
-    def toDict(t):
-        ''' t is a tuple that gets converted to a dictionary'''
-        transaction = {
-        'item': t[0],
-        'amount': t[1],
-        'category': t[2],
-        'date': t[3],
-        'description': t[4]
-        }
-        return transaction
+        con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
+        cur = con.cursor() 
+        cur.execute(query,tuple)
+        rows = cur.fetchall()
+        con.commit()
+        con.close()
+        return [toDict(row) for row in rows]
     
    
 
