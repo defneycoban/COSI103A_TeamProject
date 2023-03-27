@@ -45,7 +45,7 @@ class Transactions():
     # created by Madina
     def add(self,item):
         ''' create a transaction with all the fields needed and add it to the transactions table '''
-        return self.runQuery("INSERT INTO transactions VALUES(?,?,?)",item['amount'],item['date'],item['description'])
+        return self.runQuery("INSERT INTO transactions VALUES(?,?,?)",(item['amount'],item['date'],item['description']))
 
     # created by Madina
     def delete(self,rowid):
