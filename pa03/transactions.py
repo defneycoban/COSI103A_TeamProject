@@ -5,11 +5,9 @@ import os
 def toDict(t):
     ''' t is a tuple that gets converted to a dictionary'''
     transaction = {
-    'item': t[0],
-    'amount': t[1],
-    'category': t[2],
-    'date': t[3],
-    'description': t[4]
+    'amount': t[0],
+    'date': t[1],
+    'description': t[2]
     }
     return transaction
 

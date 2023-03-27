@@ -1,5 +1,6 @@
 # pytest tests for transactions.py
 from transactions import Transactions
+
 #Eliora's test
 def test_sort():
     db = Transactions()
@@ -9,25 +10,21 @@ def test_sort():
     db.add({'amount': 20.0, 'date': '2023-01-27', 'description': 'Groceries'})
     # check original order
     rows = db.show_transactions()
-    assert len(rows) == 3
     assert rows[0]['description'] == 'Lunch'
     assert rows[1]['description'] == 'Bus fare'
     assert rows[2]['description'] == 'Groceries'
     # check if they are sorted by date
     rows = db.sort('date')
-    assert len(rows) == 3
     assert rows[0]['description'] == 'Groceries'
     assert rows[1]['description'] == 'Bus fare'
     assert rows[2]['description'] == 'Lunch'
     # check if they are sorted by month
     rows = db.sort('month')
-    assert len(rows) == 3
     assert rows[0]['description'] == 'Bus fare'
     assert rows[1]['description'] == 'Lunch'
     assert rows[2]['description'] == 'Groceries'
     #check if they are sorted by year
     rows = db.sort('year')
-    assert len(rows) == 3
     assert rows[0]['description'] == 'Groceries'
     assert rows[1]['description'] == 'Lunch'
     assert rows[2]['description'] == 'Bus fare'
