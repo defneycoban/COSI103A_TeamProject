@@ -26,11 +26,11 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         if(arg=='month'):
-            return self.runQuery(f"SELECT rowid,* from transaction where substr(date,6,2)={arg} DESC",())   #change dictName when implemented
+            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,6,2)={arg} DESC",())   #change dictName when implemented
         if(arg=='year'):
-            return self.runQuery(f"SELECT rowid,* from transaction where substr(date,1,4)={arg} DESC",())
+            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,1,4)={arg} DESC",())
         else:
-            return self.runQuery(f"SELECT rowid,* from transaction where date={arg} DESC",())
+            return self.runQuery(f"SELECT rowid,* from transactions where date={arg} DESC",())
         # if(arg=='month'):
         #     arg = arg[5:7]
         # if(arg=='year'):
@@ -40,7 +40,7 @@ class Transactions():
     # created by Madina
     def show_transactions(self):
         ''' return all of the transactions as a list of dicts.'''
-        return self.runQuery("SELECT rowid,* from todo",())
+        return self.runQuery("SELECT rowid,* from transactions",())
     
     # created by Madina
     def add(self,item):

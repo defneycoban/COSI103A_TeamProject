@@ -17,7 +17,7 @@ def process(arglist):
         if len(arglist)!=5: #because there are 5 fields
             print_usage()
         else:
-            dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]} in tracker.py #dictName in transactions.py
+            dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]}
             transaction.add(dictName)
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
