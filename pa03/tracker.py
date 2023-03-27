@@ -2,48 +2,39 @@
 import sys
 from transactions import Transactions
 
+# Eliora's method
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
     transaction = Transactions()
-
+    
     if arglist==[]:
-        #not implemented yet: print_usage() in tracker.py
-        print("placeholder")
+        print_usage()
     elif arglist[0]=="quit":
         quit()
     elif arglist[0]=="show":
-        #not implemented yet: print_transactions(transaction.show()) in tracker.py, transaction.show() in transactions.py
-        print("placeholder")
+        print_transactions(transaction.show())
     elif arglist[0]=='add':
         if len(arglist)!=5: #because there are 5 fields
-            #not implemented yet: print_usage() in tracker.py
-            print("placeholder")
+            print_usage()
         else:
-            dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]} in tracker.py #dictName in transactions.py
-            #not implemented yet: transaction.add(dictName) in transactions.py, dictName in transactions.py
-            print("placeholder")
+            dictName = {'item #':arglist[1],'amount':arglist[2],'category':arglist[3],'date':arglist[4],'description':arglist[5]}
+            transaction.add(dictName)
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
-            #not implemented yet: print_usage() in tracker.py
-            print("placeholder")
+            print_usage()
         else:
-            #not implemented yet: transaction.delete(arglist[1]) in transactions.py
-            print("placeholder")
+            transaction.delete(arglist[1])
     elif arglist[0]=="summarizeDates":
-        #not implemented yet: print_transactions(dictName = transaction.sort(date)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('date'))
     elif arglist[0]=="summarizeMonths":
-        #not implemented yet: print_transactions(dictName = transaction.sort(month)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('month'))
     elif arglist[0]=="summarizeYears":
-        #not implemented yet: print_transactions(dictName = transaction.sort(year)) in tracker.py, transaction.select() in transactions.py, dictName in transactions.py
-        print("placeholder")
+        print_transactions(transaction.sort('year'))
     elif arglist[0]=="print":
-        #not implemented yet: print_usage() in tracker.py
-        print("placeholder")
+        print_usage()
     else:
         print(arglist," is not implemented")
-        #not implemented yet: print_usage() in tracker.py
+        print_usage()
 
 # Madina's method
 def print_usage():
@@ -60,6 +51,21 @@ def print_usage():
             transactions print this menu
             '''
             )
+
+# created by Defne
+def print_transactions(transactions):
+    ''' print the transaction items '''
+    if len(transactions) == 0:
+        print('no transactions to print')
+        return
+    print('\n')
+    print("%-10s %-10s %-20s %-30s %-20s"%('item #','amount','category','date','description'))
+    print('-'*90)
+    for item in transactions:
+        values = tuple(item.values()) #(item, amount, date, category, description)
+        print("%-10s %-10s %-20s %-30s %-20s"%values)
+
+    
 
 # Created by Zev
 def read_eval():
