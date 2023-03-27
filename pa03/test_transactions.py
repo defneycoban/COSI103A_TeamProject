@@ -9,6 +9,12 @@ def db():
 #     db.add({'item #': 1, 'amount': 10.0, 'category': 'Food', 'date': '2022-02-26', 'description': 'Lunch'})
 #     db.add({'item #': 2, 'amount': 5.0, 'category': 'Transport', 'date': '2022-03-24', 'description': 'Bus fare'})
 #     db.add({'item #': 3, 'amount': 20.0, 'category': 'Shopping', 'date': '2023-01-27', 'description': 'Groceries'})
+#     # check original order
+#     rows = db.show_transactions()
+#     assert len(rows) == 3
+#     assert rows[0]['item #'] == 1
+#     assert rows[1]['item #'] == 2
+#     assert rows[2]['item #'] == 3
 #     # check if they are sorted by date
 #     rows = db.sort('date')
 #     assert len(rows) == 3
