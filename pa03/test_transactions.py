@@ -10,27 +10,27 @@ def test_sort():
     # check original order
     rows = db.show_transactions()
     assert len(rows) == 3
-    assert rows[0]['item #'] == 1
-    assert rows[1]['item #'] == 2
-    assert rows[2]['item #'] == 3
+    assert rows[0]['description'] == 'Lunch'
+    assert rows[1]['description'] == 'Bus fare'
+    assert rows[2]['description'] == 'Groceries'
     # check if they are sorted by date
     rows = db.sort('date')
     assert len(rows) == 3
-    assert rows[0]['item #'] == 3
-    assert rows[1]['item #'] == 2
-    assert rows[2]['item #'] == 1
+    assert rows[0]['description'] == 'Groceries'
+    assert rows[1]['description'] == 'Bus fare'
+    assert rows[2]['description'] == 'Lunch'
     # check if they are sorted by month
     rows = db.sort('month')
     assert len(rows) == 3
-    assert rows[0]['item #'] == 2
-    assert rows[1]['item #'] == 1
-    assert rows[2]['item #'] == 3
+    assert rows[0]['description'] == 'Bus fare'
+    assert rows[1]['description'] == 'Lunch'
+    assert rows[2]['description'] == 'Groceries'
     #check if they are sorted by year
     rows = db.sort('year')
     assert len(rows) == 3
-    assert rows[0]['item #'] == 3
-    assert rows[1]['item #'] == 1
-    assert rows[2]['item #'] == 2
+    assert rows[0]['description'] == 'Groceries'
+    assert rows[1]['description'] == 'Lunch'
+    assert rows[2]['description'] == 'Bus fare'
 
 def test_add():
     db = Transactions()
