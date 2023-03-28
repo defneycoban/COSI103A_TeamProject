@@ -10,7 +10,6 @@ from transactions import Transactions
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
     transaction = Transactions('transactions.db')
-    
     if arglist==[]: #if no arguments are passed, print the options
         print_usage()
     elif arglist[0]=="quit":
@@ -33,7 +32,7 @@ def process(arglist):
     elif arglist[0]=="summarizeMonths":
         if len(arglist)!=2:    #user must input a month
             print_usage()
-        if(len(arglist[1])!=2): #user must input a month in the correct format
+        if len(arglist[1])!=2 : #user must input a month in the correct format
             print_usage()
         else:
             print_transactions(transaction.sort(arglist[1]))
@@ -81,9 +80,8 @@ def print_transactions(transactions):
 # Created by Zev
 def read_eval():
     ''' reads and evaluates input '''
-    if len(sys.argv) == 1:
-        # no arguments passed
-        print_usage() 
+    if len(sys.argv) == 1: # no arguments passed
+        print_usage()
         args = []
         while args != ['']:
             args = input('>> ').split(' ')
@@ -99,5 +97,3 @@ def read_eval():
         print('-' * 40 + '\n' * 3)
 
 read_eval()
-
-
