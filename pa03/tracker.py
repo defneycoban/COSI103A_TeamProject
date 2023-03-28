@@ -12,7 +12,7 @@ def process(arglist):
     elif arglist[0]=="quit":
         quit()
     elif arglist[0]=="show":
-        print_transactions(transaction.show())
+        print_transactions(transaction.show_transactions())
     elif arglist[0]=='add':
         if len(arglist)!=3: #because there are 3 fields that must be added each time
             print_usage()
@@ -25,11 +25,21 @@ def process(arglist):
         else:
             transaction.delete(arglist[1])
     elif arglist[0]=="summarizeDates":
-        print_transactions(transaction.sort('date'))    #should the user input a date? or should it be sorted by date?
+        print_transactions(transaction.sort('dates'))
     elif arglist[0]=="summarizeMonths":
-        print_transactions(transaction.sort('month'))
+        if(len(arglist)!=2):    #user must input a month
+            print_usage()
+        if(len(arglist[1])!=2): #user must input a month in the correct format
+            print_usage()
+        else:
+            print_transactions(transaction.sort(arglist[1]))
     elif arglist[0]=="summarizeYears":
-        print_transactions(transaction.sort('year'))
+        if(len(arglist)!=2):    #user must input a year
+            print_usage()
+        if(len(arglist[1])!=4):   #user must input a year in the correct format
+            print_usage()
+        else:
+            print_transactions(transaction.sort(arglist[1]))
     elif arglist[0]=="print":
         print_usage()
     else:   #if the user inputs something that is not an option
