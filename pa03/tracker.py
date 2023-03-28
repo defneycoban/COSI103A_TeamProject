@@ -1,3 +1,7 @@
+"""
+This module includes the functions for tracker.
+"""
+
 # All printing should be done in this class. Sql commands go in transactions.py
 import sys
 from transactions import Transactions
