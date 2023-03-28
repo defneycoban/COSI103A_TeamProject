@@ -3,12 +3,12 @@ from transactions import Transactions
 import pytest
 
 @pytest.fixture
-def todo_path(tmp_path):
+def path(tmp_path):
     yield tmp_path / 'todo.db'
 
 #Eliora's test
 def test_sort():
-    db = Transactions(tmp_path)
+    db = Transactions(path)
     # add some transactions
     db.add({'amount': 10.0, 'date': '2022-02-26', 'description': 'Lunch'})
     db.add({'amount': 5.0, 'date': '2022-03-24', 'description': 'Bus fare'})
@@ -40,7 +40,7 @@ def test_sort():
 
 #Madina's method
 def test_add():
-    db = Transactions(tmp_path)
+    db = Transactions(path)
     # add a transaction
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     # check if it was added
@@ -52,7 +52,7 @@ def test_add():
 
 #Madina's method
 def test_delete():
-    db = Transactions(tmp_path)
+    db = Transactions(path)
     # add a transaction
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     # delete the transaction
@@ -63,7 +63,7 @@ def test_delete():
 
 #Madina's method
 def test_show_transactions():
-    db = Transactions(tmp_path)
+    db = Transactions(path)
     # add some transactions
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     db.add({'amount': 5.0, 'date': '2022-03-26', 'description': 'Bus fare'})
