@@ -331,3 +331,52 @@ id     amount       date                    description
 2 15 2022-06-03 dinner
 1 10 2022-03-06 lunch
 ----------------------------------------
+
+Running Madina's methods:
+PS C:\Users\madin\Documents\github\COSI103A_TeamProject\pa03> python tracker.py
+usage:
+            quit
+            show transactions
+            add transaction: 'amount' 'date' 'description'
+            delete transaction
+            summarizeDates
+            summarizeMonths "MM"
+            summarizeYears "YYYY"
+            print this menu
+
+>> show transactions
+
+id     amount       date                    description
+------------------------------------------------------------------------------------------
+2 15 2022-06-03 dinner
+----------------------------------------
+
+>> add 10.0 2022-03-05 Groceries
+----------------------------------------
+
+
+
+>> show transactions
+
+
+id     amount       date                    description
+------------------------------------------------------------------------------------------
+2 15 2022-06-03 dinner
+3 10 2022-03-05 Groceries
+----------------------------------------
+
+
+
+>> delete 3
+----------------------------------------
+
+
+>> show transactions
+
+
+id     amount       date                    description
+------------------------------------------------------------------------------------------
+2 15 2022-06-03 dinner
+----------------------------------------
+
+
