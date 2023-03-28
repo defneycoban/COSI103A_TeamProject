@@ -5,20 +5,6 @@ import pytest
 @pytest.fixture
 def path(tmp_path):
     yield tmp_path / 'todo.db'
-    
-# zev's test
-@pytest.fixture(autouse = True)
-def transactions(path): 
-    db = Transactions(path)
-    yield db
-    
-def test_init(transactions):
-    db = transactions
-    print(db)
-    db.add({'amount': 1, 'date': '2022-02-26', 'description': 'Lunch'})
-    results = db.show_transactions()
-    assert len(results) == 1
-    # assert results[0] == "test"
 
 #Eliora's test
 def test_sort():
@@ -53,8 +39,8 @@ def test_sort():
     assert rows[2]['description'] == 'Bus fare'
 
 #Madina's method
-def test_add():
-    db = Transactions(path)
+def test_add(transactions):
+    db = transactions 
     # add a transaction
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     # check if it was added
@@ -65,8 +51,8 @@ def test_add():
     assert rows[0]['description'] == 'Lunch'
 
 #Madina's method
-def test_delete():
-    db = Transactions(path)
+def test_delete(transactions):
+    db = transactions
     # add a transaction
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     # delete the transaction
@@ -76,8 +62,8 @@ def test_delete():
     assert len(rows) == 0
 
 #Madina's method
-def test_show_transactions():
-    db = Transactions(path)
+def test_show_transactions(transactions):
+    db = transactions
     # add some transactions
     db.add({'amount': 10.0, 'date': '2022-03-26', 'description': 'Lunch'})
     db.add({'amount': 5.0, 'date': '2022-03-26', 'description': 'Bus fare'})
