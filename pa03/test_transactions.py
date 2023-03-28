@@ -88,7 +88,28 @@ def test_show_transactions(transactions):
     rows = db.show_transactions()
     assert len(rows) == 3
 
+def test_runQuery(transactions):
+    db = transactions
+    # add some transactions to the database
+    db.runQuery("INSERT INTO transactions VALUES (10.0, '2022-03-26', 'Lunch')", ())
+    db.runQuery("INSERT INTO transactions VALUES (5.0, '2022-03-26', 'Bus fare')", ())
+    db.runQuery("INSERT INTO transactions VALUES (20.0, '2022-03-27', 'Groceries')", ())
+    # execute a SELECT query to retrieve the transaction data
+    results = db.show_transactions()
+    #results = db.runQuery("SELECT * FROM transactions WHERE date = ?", ('2022-03-26',))
 
+    # check if the number of rows returned is correct
+    assert len(results) == 3
+    # check if the data in the rows is correct
+    assert results[0]['amount'] == 10.0
+    assert results[0]['date'] == '2022-03-26'
+    assert results[0]['description'] == 'Lunch'
+    assert results[1]['amount'] == 5.0
+    assert results[1]['date'] == '2022-03-26'
+    assert results[1]['description'] == 'Bus fare'
+    assert results[2]['amount'] == 20.0
+    assert results[2]['date'] == '2022-03-27'
+    assert results[2]['description'] == 'Groceries'
 
 
 
