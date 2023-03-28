@@ -11,14 +11,16 @@ def path(tmp_path):
 def transactions(path): 
     db = Transactions(path)
     yield db
-    
+   
+# tests creating database, add, and delete 
 def test_init(transactions):
     db = transactions
     print(db)
     db.add({'amount': 1, 'date': '2022-02-26', 'description': 'Lunch'})
     results = db.show_transactions()
     assert len(results) == 1
-    db.delete(0)
+    db.delete(1)
+    results = db.show_transactions()
     assert len(results) == 0
 
 #Eliora's test
