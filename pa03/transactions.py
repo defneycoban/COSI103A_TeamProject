@@ -5,9 +5,9 @@ import os
 def toDict(t):
     ''' t is a tuple that gets converted to a dictionary'''
     transaction = {
-    'amount': t[0],
-    'date': t[1],
-    'description': t[2]
+    'amount': t[1],
+    'date': t[2],
+    'description': t[3]
     }
     return transaction
 
@@ -30,7 +30,7 @@ class Transactions():
         if(arg=='year'):
             return self.runQuery(f"SELECT rowid,* from transactions where substr(date,1,4)={arg} DESC",())
         else:
-            return self.runQuery(f"SELECT rowid,* from transactions where date={arg} DESC",())
+            return self.runQuery(f"SELECT rowid,* from transactions DESC",())
         #version where all are shown sorted by month
         # if(arg=='month'):
         #     arg = arg[5:7]

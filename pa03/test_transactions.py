@@ -31,24 +31,24 @@ def test_sort(transactions):
     # check original order
     rows = db.show_transactions()
     assert len(rows) == 3
-    # assert rows[0]['description'] == 'Lunch'
-    # assert rows[1]['description'] == 'Bus fare'
-    # assert rows[2]['description'] == 'Groceries'
+    assert rows[0]['description'] == 'Lunch'
+    assert rows[1]['description'] == 'Bus fare'
+    assert rows[2]['description'] == 'Groceries'
     # check if they are sorted by date
     rows = db.sort('date')
-    #assert len(rows) == 3
+    assert len(rows) == 3
     # assert rows[0]['description'] == 'Groceries'
     # assert rows[1]['description'] == 'Bus fare'
     # assert rows[2]['description'] == 'Lunch'
     # check if they are sorted by month
-    #rows = db.sort('month')
-    #assert len(rows) == 3
+    rows = db.sort('02')
+    assert len(rows) == 3
     # assert rows[0]['description'] == 'Bus fare'
     # assert rows[1]['description'] == 'Lunch'
     # assert rows[2]['description'] == 'Groceries'
     #check if they are sorted by year
-    #rows = db.sort('year')
-    #assert len(rows) == 3
+    rows = db.sort('2022')
+    assert len(rows) == 3
     # assert rows[0]['description'] == 'Groceries'
     # assert rows[1]['description'] == 'Lunch'
     # assert rows[2]['description'] == 'Bus fare'
