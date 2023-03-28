@@ -13,7 +13,7 @@ def process(arglist):
     if arglist==[]: #if no arguments are passed, print the options
         print_usage()
     elif arglist[0]=="quit":
-        quit()
+        sys.exit()
     elif arglist[0]=="show":
         print_transactions(transaction.show_transactions())
     elif arglist[0]=='add':
@@ -71,11 +71,12 @@ def print_transactions(transactions):
         print('no transactions to print')
         return
     print('\n')
-    print("%s %s %s %s"%('id', 'amount','date','description'))
+    print(f"id {'amount':>10} {'date':>10} {'description':>30}")
     print('-'*90)
     for item in transactions:
         values = tuple(item.values()) #(item, amount, date, category, description)
-        print("%s %s %s %s"%values)
+        print(f"{values[0]} {values[1]} {values[2]} {values[3]}")
+
 
 # Created by Zev
 def read_eval():
