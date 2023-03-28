@@ -15,8 +15,9 @@ def toDict(t):
 class Transactions():
     ''' methods for obtaining transaction data '''
     # created by Zev
-    def __init__(self):
+    def __init__(self, path):
         ''' initialize the database '''
+        self.path = path
         self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
                       (amount int, date text, description text)''', ())
     
@@ -55,7 +56,8 @@ class Transactions():
    # created by Defne
     def runQuery(self, query, tuple):
         '''execute a SQLite command and return the result as a list of dictionaries'''
-        con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
+        # con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
+        con = sqlite3.connect(self.path)
         cur = con.cursor() 
         cur.execute(query,tuple)
         rows = cur.fetchall()

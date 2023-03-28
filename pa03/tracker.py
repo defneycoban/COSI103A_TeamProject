@@ -5,7 +5,7 @@ from transactions import Transactions
 # Eliora's method
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
-    transaction = Transactions()
+    transaction = Transactions('transactions.db')
     
     if arglist==[]: #if no arguments are passed, print the options
         print_usage()
