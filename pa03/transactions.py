@@ -26,7 +26,7 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         if len(arg)==2:
-            return self.run_query("""SELECT rowid,* from transactions where substr(date,6,2)=(?
+            return self.run_query("""SELECT rowid,* from transactions where substr(date,6,2)=(?)
                                   ORDER BY date DESC""",(arg,))
         if len(arg)==4:
             return self.run_query("""SELECT rowid,* from transactions where substr(date,1,4)=(?)
