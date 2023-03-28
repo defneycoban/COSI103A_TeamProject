@@ -18,9 +18,9 @@ class Transactions():
     def __init__(self, path):
         ''' initialize the database '''
         self.path = path
-        self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
+        self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
                       (amount int, date text, description text)''', ())
-    
+            
     # created by Eliora
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
