@@ -332,7 +332,7 @@ id     amount       date                    description
 1 10 2022-03-06 lunch
 ----------------------------------------
 
-Running Madina's methods:
+- Running Madina's methods:
 PS C:\Users\madin\Documents\github\COSI103A_TeamProject\pa03> python tracker.py
 usage:
             quit
