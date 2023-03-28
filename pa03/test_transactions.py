@@ -65,9 +65,9 @@ def test_add(transactions):
     # check if it was added
     rows = db.show_transactions()
     assert len(rows) == 1
-    assert rows[1]['amount'] == 10.0
-    assert rows[1]['date'] == '2022-03-26'
-    assert rows[1]['description'] == 'Lunch'
+    assert rows[0]['amount'] == 10.0
+    assert rows[0]['date'] == '2022-03-26'
+    assert rows[0]['description'] == 'Lunch'
 
 #Madina's method
 def test_delete(transactions):
