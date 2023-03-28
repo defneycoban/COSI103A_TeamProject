@@ -24,12 +24,19 @@ class Transactions():
     # created by Eliora
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
-        if(len(arg)==2):
-            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,6,2)=(?) ORDER BY date DESC",(arg,))
-        elif(len(arg)==4):
-            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,1,4)=(?) ORDER BY date DESC",(arg,))
+        #version where user chooses month and that month is sorted
+        if(arg=='month'):
+            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,6,2)={arg} DESC",())
+        if(arg=='year'):
+            return self.runQuery(f"SELECT rowid,* from transactions where substr(date,1,4)={arg} DESC",())
         else:
-            return self.runQuery(f"SELECT rowid,* from transactions ORDER BY date DESC",())
+            return self.runQuery(f"SELECT rowid,* from transactions DESC",())
+        #version where all are shown sorted by month
+        # if(arg=='month'):
+        #     arg = arg[5:7]
+        # if(arg=='year'):
+        #     arg = arg[0:4]
+        # return self.runQuery(f"SELECT rowid,* from dictName ORDER BY {arg} DESC",())   #change dictName when implemented
     
     # created by Madina
     def show_transactions(self):
@@ -47,12 +54,12 @@ class Transactions():
         return self.runQuery("DELETE FROM transactions WHERE rowid=(?)",(rowid,))
 
    # created by Defne
-    def runQuery(self, query, args):
+    def runQuery(self, query, tuple):
         '''execute a SQLite command and return the result as a list of dictionaries'''
         # con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
         con = sqlite3.connect(self.path)
         cur = con.cursor() 
-        cur.execute(query, args)
+        cur.execute(query,tuple)
         rows = cur.fetchall()
         con.commit()
         con.close()
