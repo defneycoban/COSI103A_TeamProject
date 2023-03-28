@@ -50,14 +50,14 @@ def process(arglist):
 def print_usage():
     ''' print an explanation of how to use this command '''
     print('''usage:
-            transactions quit
-            transactions show transactions
-            transactions add transaction
-            transactions delete transaction
-            transactions summarize transactions by date
-            transactions summarize transactions by month
-            transactions summarize transactions by year
-            transactions print this menu
+            quit
+            show transactions
+            add transaction: 'amount' 'date' 'description'
+            delete transaction
+            summarizeDates
+            summarizeMonths "MM"
+            summarizeYears "YYYY"
+            print this menu
             '''
             )
 
