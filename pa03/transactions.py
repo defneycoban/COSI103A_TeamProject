@@ -5,6 +5,7 @@ import os
 def toDict(t):
     ''' t is a tuple that gets converted to a dictionary'''
     transaction = {
+    'id': t[0],
     'amount': t[1],
     'date': t[2],
     'description': t[3]
@@ -18,9 +19,9 @@ class Transactions():
     def __init__(self, path):
         ''' initialize the database '''
         self.path = path
-        self.runQuery('''CREATE TABLE IF NOT EXISTS transactions 
+        self.runQuery('''CREATE TABLE IF NOT EXISTS transactions
                       (amount int, date text, description text)''', ())
-    
+            
     # created by Eliora
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
