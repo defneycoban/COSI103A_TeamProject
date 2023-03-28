@@ -296,7 +296,7 @@ Eliora wrote the sort method.
 
 ---
 
-Running Madina's methods:
+- Running Madina's methods:
 PS C:\Users\madin\Documents\github\COSI103A_TeamProject\pa03> python tracker.py
 usage:
 quit
