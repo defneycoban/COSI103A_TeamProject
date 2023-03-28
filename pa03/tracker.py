@@ -14,7 +14,7 @@ def process(arglist):
     elif arglist[0]=="show":
         print_transactions(transaction.show_transactions())
     elif arglist[0]=='add':
-        if len(arglist)!=3: #because there are 3 fields that must be added each time
+        if len(arglist)!=4: #because there are 3 fields that must be added each time
             print_usage()
         else:
             dictName = {'amount':arglist[1],'date':arglist[2],'description':arglist[3]}
