@@ -5,6 +5,20 @@ import pytest
 @pytest.fixture
 def path(tmp_path):
     yield tmp_path / 'todo.db'
+    
+# zev's test
+@pytest.fixture(autouse = True)
+def transactions(path): 
+    db = Transactions(path)
+    yield db
+    
+def test_init(transactions):
+    db = transactions
+    print(db)
+    db.add({'amount': 1, 'date': '2022-02-26', 'description': 'Lunch'})
+    results = db.show_transactions()
+    assert len(results) == 1
+    # assert results[0] == "test"
 
 #Eliora's test
 def test_sort():

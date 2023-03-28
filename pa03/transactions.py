@@ -56,7 +56,8 @@ class Transactions():
    # created by Defne
     def runQuery(self, query, tuple):
         '''execute a SQLite command and return the result as a list of dictionaries'''
-        con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
+        # con= sqlite3.connect(os.getenv('HOME')+'/tracker.db')
+        con = sqlite3.connect(self.path)
         cur = con.cursor() 
         cur.execute(query,tuple)
         rows = cur.fetchall()
