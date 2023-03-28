@@ -1,3 +1,7 @@
+"""
+This module includes the functions for tracker.
+"""
+
 # All printing should be done in this class. Sql commands go in transactions.py
 import sys
 from transactions import Transactions
@@ -6,19 +10,18 @@ from transactions import Transactions
 def process(arglist):
     ''' examine args and make appropriate calls to the database'''
     transaction = Transactions('transactions.db')
-    
     if arglist==[]: #if no arguments are passed, print the options
         print_usage()
     elif arglist[0]=="quit":
-        quit()
+        sys.exit()
     elif arglist[0]=="show":
         print_transactions(transaction.show_transactions())
     elif arglist[0]=='add':
         if len(arglist)!=4: #because there are 3 fields that must be added each time
             print_usage()
         else:
-            dictName = {'amount':arglist[1],'date':arglist[2],'description':arglist[3]}
-            transaction.add(dictName)
+            dict_name = {'amount':arglist[1],'date':arglist[2],'description':arglist[3]}
+            transaction.add(dict_name)
     elif arglist[0]=='delete':
         if len(arglist)!= 2:
             print_usage()
@@ -27,16 +30,16 @@ def process(arglist):
     elif arglist[0]=="summarizeDates":
         print_transactions(transaction.sort('dates'))
     elif arglist[0]=="summarizeMonths":
-        if(len(arglist)!=2):    #user must input a month
+        if len(arglist)!=2:    #user must input a month
             print_usage()
-        if(len(arglist[1])!=2): #user must input a month in the correct format
+        if len(arglist[1])!=2 : #user must input a month in the correct format
             print_usage()
         else:
             print_transactions(transaction.sort(arglist[1]))
     elif arglist[0]=="summarizeYears":
-        if(len(arglist)!=2):    #user must input a year
+        if len(arglist)!=2:    #user must input a year
             print_usage()
-        if(len(arglist[1])!=4):   #user must input a year in the correct format
+        if len(arglist[1])!=4:   #user must input a year in the correct format
             print_usage()
         else:
             print_transactions(transaction.sort(arglist[1]))
@@ -68,20 +71,18 @@ def print_transactions(transactions):
         print('no transactions to print')
         return
     print('\n')
-    print("%s %s %s %s"%('id', 'amount','date','description'))
+    print(f"id {'amount':>10} {'date':>10} {'description':>30}")
     print('-'*90)
     for item in transactions:
         values = tuple(item.values()) #(item, amount, date, category, description)
-        print("%s %s %s %s"%values)
-
+        print(f"{values[0]} {values[1]} {values[2]} {values[3]}")
 
 
 # Created by Zev
 def read_eval():
     ''' reads and evaluates input '''
-    if len(sys.argv) == 1:
-        # no arguments passed
-        print_usage() 
+    if len(sys.argv) == 1: # no arguments passed
+        print_usage()
         args = []
         while args != ['']:
             args = input('>> ').split(' ')
@@ -97,5 +98,3 @@ def read_eval():
         print('-' * 40 + '\n' * 3)
 
 read_eval()
-
-
