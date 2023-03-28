@@ -85,9 +85,9 @@ def read_eval():
         args = []
         while args != ['']:
             args = input('>> ').split(' ')
-            if args[0] == 'add':
-                # join everything after the "add" keyword
-                args = ['add', args[1], ' '.join(args[2:])]
+            # if args[0] == 'add':
+            #     # join everything after the "add" keyword
+            #     args = ['add', args[1], ' '.join(args[2:])]
             process(args)
             print('-' * 40 + '\n' * 3)
     else:
