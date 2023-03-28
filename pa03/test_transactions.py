@@ -19,6 +19,8 @@ def test_init(transactions):
     db.add({'amount': 1, 'date': '2022-02-26', 'description': 'Lunch'})
     results = db.show_transactions()
     assert len(results) == 1
+    assert results[0]['amount'] == 1
+    assert results[0]['date'] == '2022-02-26'
     db.delete(1)
     results = db.show_transactions()
     assert len(results) == 0
