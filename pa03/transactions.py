@@ -26,9 +26,11 @@ class Transactions():
     def sort(self, arg):
         ''' return the transactions sorted by the given argument '''
         if len(arg)==2:
-            return self.run_query("SELECT rowid,* from transactions where substr(date,6,2)=(?) ORDER BY date DESC",(arg,))
+            return self.run_query("""SELECT rowid,* from transactions where substr(date,6,2)=(?
+                                  ORDER BY date DESC""",(arg,))
         if len(arg)==4:
-            return self.run_query("SELECT rowid,* from transactions where substr(date,1,4)=(?) ORDER BY date DESC",(arg,))
+            return self.run_query("""SELECT rowid,* from transactions where substr(date,1,4)=(?)
+                                  ORDER BY date DESC""",(arg,))
         return self.run_query("SELECT rowid,* from transactions ORDER BY date DESC",())
 
     # created by Madina
@@ -39,7 +41,8 @@ class Transactions():
     # created by Madina
     def add(self,item):
         ''' create a transaction with all the fields needed and add it to the transactions table '''
-        return self.run_query("INSERT INTO transactions VALUES(?,?,?)",(item['amount'],item['date'],item['description']))
+        return self.run_query("INSERT INTO transactions VALUES(?,?,?)"
+                              ,(item['amount'],item['date'],item['description']))
 
     # created by Madina
     def delete(self,rowid):
