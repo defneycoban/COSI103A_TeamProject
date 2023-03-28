@@ -18,7 +18,8 @@ def test_init(transactions):
     db.add({'amount': 1, 'date': '2022-02-26', 'description': 'Lunch'})
     results = db.show_transactions()
     assert len(results) == 1
-    # assert results[0] == "test"
+    db.delete(0)
+    assert len(results) == 0
 
 #Eliora's test
 def test_sort():
