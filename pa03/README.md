@@ -338,3 +338,29 @@ print this menu
 ## 2 15 2022-06-03 dinner
 
 Zev's additions are the read/eval loop and the constructor for the Transactions() class, as well as the test_init pytest test. Running any of the commands runs my read/eval loop and constructor commands, so take all the other examples as demonstration for my methods. And as is visible from the pytest output, my pytest passes.
+
+-----------------------------------------------------------------------------------------------------------
+Defne's methods are the run_query() and to_dict(trans) dunctions inside transactions.py and also the print transaction method inside tracker.py. She also wrote the to_dict test inside test_transactions.py. Here is how they work:
+
+runQuery() method:
+
+This method executes a SQLite command and returns the result as a list of dictionaries.
+It takes in two arguments: a SQL query string and a tuple of arguments to be passed to the query.
+It connects to the SQLite database using the sqlite3.connect() method, creates a cursor object, executes the SQL query using the execute() method of the cursor object, fetches the results using the fetchall() method, and closes the connection to the database.
+It then converts each row of the result set to a dictionary using the to_dict() function, and returns a list of these dictionaries.
+
+toDict() function:
+
+This function takes in a tuple representing a single row of a SQLite result set and returns a dictionary with keys corresponding to the column names and values corresponding to the values in the tuple.
+It uses hard-coded column names in the dictionary, so it assumes that the columns in the result set are always in the same order.
+print_transactions() function:
+
+This function prints out a table of transaction data, with columns for item number, amount, date, and description.
+It takes in a list of dictionaries representing transactions, where each dictionary corresponds to a single row of the result set.
+It uses the tuple() method to convert the values of each dictionary to a tuple, and then uses string formatting to print out the table in a neat format.
+
+toDict() test:
+
+This test checks that the toDict() function correctly converts a tuple representing a row of a SQLite result set to a dictionary.
+It creates a sample tuple and a corresponding expected dictionary, and then calls the toDict() function with the tuple as an argument.
+It then checks that the resulting dictionary is equal to the expected dictionary.
