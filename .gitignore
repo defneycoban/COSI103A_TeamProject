@@ -1,6 +1,9 @@
 #DO NOT DELETE THIS: protects API_KEY
 .env
 
+package*.json
+/node_modules
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
