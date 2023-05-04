@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 const Prompt = require('../models/Prompt')
 const User = require('../models/User')
+const ChatGPT = require('./chatgpt.js')
 
 
 /*
@@ -34,6 +35,28 @@ router.post('/prompt',
       await todo.save();
       res.redirect('/prompt')
 });
+
+router.get('/villain', (req,res,next) => {
+  res.render('elioraPrompt')
+})
+
+router.post('/villain',
+  async (req,res,next) => {
+    console.log('getting villain')
+    res.locals.prompt = req.body.prompt
+    result = await get_villain(req.body.prompt)
+    console.log('Result:', result); //result is currently undefined :(
+    res.render('response', {result})
+}
+)
+
+//TODO: must be implemented
+const get_villain = async (prompt) => {
+  const message = 'What would be a good Dungeons and Dragons monster to fight against for:' + prompt;
+  const response = await ChatGPT.getChatGPTResponse(message);
+  console.log('Response:', response); //response is currently undefined :(
+  return response;
+};
 
 router.get('/prompt/byUser',
   isLoggedIn,
