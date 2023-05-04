@@ -1,0 +1,67 @@
+<!--change routing-->
+
+<p style="display: none">{% block title %}Team{% endblock %}</p>
+<h1>Introducing... ^-^</h1>
+<!-- 
+  I'm commenting this out until we take a picture.
+  
+  <div class="container">
+  <img
+    src="{{url_for('static', filename='placeholder.jpg')}}"
+    alt="Group picture!"
+    class="big-img" />
+</div> -->
+<div class="container">
+  <p class="caption">This is our team. Aren't we cool?</p>
+</div>
+<div class="container">
+  <!-- copy paste from here until the next comment, and just replace all the "zev" stuff with your own stuff! -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='zev.png')}}"
+      alt="Zev"
+      class="profile" />
+    <p class="name">Zev</p>
+    <p class="description">
+      Zev is a Junior at Brandeis University. He sure loves css!
+    </p>
+    <a href="{{url_for('setting')}}" class="prompt-link">Zev's prompt</a>
+  </div>
+  <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='eliora.jpeg')}}"
+      alt="Eliora"
+      class="profile" />
+    <p class="name">Eliora</p>
+    <p class="description">
+      Eliora is a Sophomore at Brandeis University. She likes playing DnD in a
+      bad French accent!
+    </p>
+    <a href="{{url_for('villain')}}" class="prompt-link">Eliora's prompt</a>
+  </div>
+    <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='madina.jpg')}}"
+      alt="Madina"
+      class="profile" />
+    <p class="name">Madina</p>
+    <p class="description">
+      Madina is a Sophomore at Brandeis University, and doesn't know a thing about DnD!
+    </p>
+    <a href="{{url_for('quest')}}" class="prompt-link">Madina's prompt</a>
+  </div>
+  <!-- End copy paste here, and place below! Make sure you put your images in the "static" folder. -->
+  <div class="card">
+    <img
+      src="{{url_for('static', filename='defne.jpeg')}}"
+      alt="Madina"
+      class="profile" />
+    <p class="name">Defne</p>
+    <p class="description">
+      Defne is a Sophomore at Brandeis University. She started playing DnD because she loves dragons!
+    </p>
+    <a href="{{url_for('hero')}}" class="prompt-link">Defne's prompt</a>
+  </div>
+</div>
