@@ -1,0 +1,21 @@
+<h1>Summary of User Prompts</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Prompt</th>
+            <th>Response</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% results.map(item => {%>
+            <tr>
+               <td> <%= item.category %> </td>
+               <td><%= item.question %></td>
+               <td><%= item.answer %></td>
+            </tr>
+            
+            <% }) %>
+
+    </tbody>
+</table>

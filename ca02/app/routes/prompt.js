@@ -81,7 +81,6 @@ const get_quest = async (prompt) => {
   return response;
 };
 
-
 router.get('/prompt/byUser',
   isLoggedIn,
   async (req, res, next) => {
@@ -104,6 +103,17 @@ router.get('/prompt/byUser',
         res.render('summarizeByUser',{results})
 });
 
+router.get('/prompt/byCategory',
+  isLoggedIn,
+  async (req, res, next) => {
+    res.locals.show = req.query.show
+      const sortBy = 'category';
+      const sortOrder = 'asc';
+      results = 
+        await Prompt.find(
+           {userId:req.user._id}).sort({ [sortBy]: sortOrder })
+      res.render('byCategory',{results})
+         });
 
 
 module.exports = router;
