@@ -5,14 +5,7 @@ const express = require("express");
 const router = express.Router();
 const Prompt = require("../models/Prompt");
 const User = require("../models/User");
-const ChatGPT = require("./chatgpt.js");
-const { getResponse } = require("./gptPromptZev");
-
-/*
-this is a very simple server which maintains a key/value
-store using an object where the keys and values are lists of strings
-
-*/
+const axios = require("axios"); //for API
 
 isLoggedIn = (req, res, next) => {
   if (res.locals.loggedIn) {
@@ -22,43 +15,54 @@ isLoggedIn = (req, res, next) => {
   }
 };
 
-/* add the value in the body to the db associated to the key */
-router.post("/prompt", isLoggedIn, async (req, res, next) => {
-  const prompt = new Prompt({
-    item: req.body.item,
-    createdAt: new Date(),
-    status: true,
-    userId: req.user._id,
-  });
-  await todo.save();
-  res.redirect("/prompt");
+//for importing images from public
+router.use(express.static("public"));
+
+//routes for other pages
+router.get("/index", (req, res, next) => {
+  res.render("index");
+});
+
+router.get("/about", (req, res, next) => {
+  res.render("about");
+});
+
+router.get("/team", (req, res, next) => {
+  res.render("team");
 });
 
 router.get("/villain", (req, res, next) => {
+  console.log("inside villain");
   res.render("elioraPrompt");
 });
 
-router.post("/villain", async (req, res, next) => {
-  console.log("getting villain");
-  res.locals.prompt = req.body.prompt;
-  result = await get_villain(req.body.prompt);
-  console.log("Result:", result); //result is currently undefined :(
+//Eliora's prompt
+router.post("/villain", isLoggedIn, async (req, res, next) => {
+  const prompt = req.body.prompt;
+  console.log("prompt:", prompt);
+  response = await axios.post(
+    "http://gracehopper.cs-i.brandeis.edu:3500/openai",
+    {
+      prompt:
+        "What would be a good Dungeons and Dragons monster to fight against for:" +
+        prompt,
+    }
+  );
+  result = response.data.choices[0].message.content;
+  const message = new Prompt({ //create a new Prompt item
+    question: req.body.prompt,
+    category: "villain",
+    answer: result,
+    createdAt: new Date(),
+    userId: req.user._id,
+  });
+  await message.save();
   res.render("response", { result });
 });
 
-//TODO: must be implemented
-const get_villain = async (prompt) => {
-  const message =
-    "What would be a good Dungeons and Dragons monster to fight against for:" +
-    prompt;
-  const response = await ChatGPT.getChatGPTResponse(message);
-  console.log("Response:", response); //response is currently undefined :(
-  return response;
-};
-
-//////////////////////////////////////////////////
-/////////////// Zev's Code ///////////////////////
-//////////////////////////////////////////////////
+router.get("/quest", (req, res, next) => {
+  res.render("madinaPrompt");
+});
 
 router.get("/setting", async (req, res, next) => {
   res.render("zevPrompt");
@@ -122,6 +126,16 @@ router.get("/prompt/byUser", isLoggedIn, async (req, res, next) => {
 
   //res.json(results)
   res.render("summarizeByUser", { results });
+});
+
+router.get("/prompt/byCategory", isLoggedIn, async (req, res, next) => {
+  res.locals.show = req.query.show;
+  const sortBy = "category";
+  const sortOrder = "asc";
+  results = await Prompt.find({ userId: req.user._id }).sort({
+    [sortBy]: sortOrder,
+  });
+  res.render("byCategory", { results });
 });
 
 module.exports = router;
