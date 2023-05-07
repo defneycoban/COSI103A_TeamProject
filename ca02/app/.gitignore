@@ -1,0 +1,3 @@
+/node_modules/**
+startup.sh
+node_modules/*
