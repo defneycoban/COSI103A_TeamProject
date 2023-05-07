@@ -65,6 +65,37 @@ router.get("/quest", (req, res, next) => {
   res.render("madinaPrompt");
 });
 
+//Defne's prompt section
+router.get('/hero', (req, res, next) => {
+  res.render('defnePrompt')
+})
+
+router.post('/hero',
+isLoggedIn,
+  async (req,res,next) => {
+    const prompt = req.body.prompt;
+    console.log('prompt:', prompt)
+    response =
+await axios.post('http://gracehopper.cs-i.brandeis.edu:3500/openai',
+{prompt:'Generate a hero for a dungeons and dragons hero with the following characteristics:' + prompt})
+      result = response.data.choices[0].message.content
+      const message = new Prompt( //create a new Prompt item
+        {question:req.body.prompt,
+          category: 'hero',
+          answer: result,
+          createdAt: new Date(),
+          userId: req.user._id
+        }
+      )
+      await message.save();
+      res.render('response', {result})
+}
+)
+//end of Defne's section
+
+
+
+
 router.get("/setting", async (req, res, next) => {
   res.render("zevPrompt");
 });
