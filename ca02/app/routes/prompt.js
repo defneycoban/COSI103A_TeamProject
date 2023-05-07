@@ -49,7 +49,8 @@ router.post("/villain", isLoggedIn, async (req, res, next) => {
     }
   );
   result = response.data.choices[0].message.content;
-  const message = new Prompt({ //create a new Prompt item
+  const message = new Prompt({
+    //create a new Prompt item
     question: req.body.prompt,
     category: "villain",
     answer: result,
@@ -70,9 +71,22 @@ router.get("/setting", async (req, res, next) => {
 
 router.post("/setting", async (req, res, next) => {
   console.log("getting setting");
-  res.locals.prompt = req.body.prompt;
-  result = await getSetting(req.body.prompt);
-  console.log("Result:", result);
+  const prompt = req.body.prompt;
+  response = await axios.post(
+    "http://gracehopper.cs-i.brandeis.edu:3500/openai",
+    {
+      prompt: "Give a dnd setting for the following character(s): " + prompt,
+    }
+  );
+  let result = response.data.choices[0].message.content;
+  const message = new Prompt({
+    question: prompt,
+    category: "setting",
+    answer: result,
+    createdAt: new Date(),
+    userId: req.user._id,
+  });
+  await message.save();
   res.render("response", { result });
 });
 
