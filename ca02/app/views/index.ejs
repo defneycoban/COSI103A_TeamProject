@@ -2,15 +2,21 @@
 
 <h1>A Hero's Journey</h1>
 
-<div class="container">
+<div class="container" style="display: flex; gap: 2rem">
   <div class="routes">
     <h2><a href="{{ url_for('hero') }}">Inspire Your Hero</a></h2>
     <h2><a href="/villain">Vanquish Your Villain</a></h2>
-    <h2><a href="{{ url_for('setting') }}">Discover Your Surroundings</a></h2>
+    <h2><a href="/setting">Discover Your Surroundings</a></h2>
     <h2><a href="{{ url_for('quest') }}">Begin Your Quest</a></h2>
   </div>
   <img
-    src="{{ url_for('public', filename='dnd.jpg') }}"
+    style="
+      height: 500px;
+      width: auto;
+      border: solid 3px gray;
+      border-radius: 20px;
+    "
+    src="/dnd.jpg"
     alt="Dnd banner art"
     class="dnd" />
 </div>
