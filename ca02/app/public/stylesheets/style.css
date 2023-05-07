@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Rubik", Arial, sans-serif;
+}
+
+:root {
+  --input-accent: #96a8b9;
+  --input-focus: #7dc0ff;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content-div {
+  margin: 2rem 15%;
+}
+
+.routes {
+  padding: 10px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.2s ease-in-out;
+}
+
+.nav a:hover {
+  transform: scale(1.1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.big-img {
+  border-radius: 20px;
+}
+
+.card {
+  padding: 20px;
+  background-color: #b8c9de;
+  box-shadow: 0 0 20px #516ead68;
+  border-radius: 20px;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card * {
+  margin: 0;
+  padding: 0;
+}
+
+.caption {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.card a {
+  text-decoration: none;
+  color: #377aff;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.profile {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.input {
+  border-radius: 7px;
+  border: 3px solid var(--input-accent);
+  padding: 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.input:focus {
+  border: 5px solid var(--input-focus);
+  outline: none;
+}
+
+textarea {
+  border-radius: 7px;
+  border: 3px solid var(--input-accent);
+  width: 400px;
+  resize: vertical;
+  padding: 5px;
+}
+
+textarea:focus {
+  border: 5px solid var(--input-focus);
+  outline: none;
+}
+
+input[type="submit"] {
+  background: #b2cae1;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  background: #9ab3ca;
+}
+
+a {
+  font-size: 20px;
+}
+
+li {
+  font-size: 18px;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+.dnd {
+  height: 60vh;
+  width: auto;
+  border: 5px solid gray;
+  border-radius: 20px;
+}

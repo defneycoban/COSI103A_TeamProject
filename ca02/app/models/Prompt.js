@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var promptSchema = Schema( {
-  item: String,
-  status: Boolean,
+  question: String, //prompt
+  category: String, //villain, quest, hero, or setting
+  answer: String, //gpt response
   createdAt: Date,
   userId: {type:ObjectId, ref:'user' }
 } );
