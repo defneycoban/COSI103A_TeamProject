@@ -93,7 +93,32 @@ await axios.post('http://gracehopper.cs-i.brandeis.edu:3500/openai',
 )
 //end of Defne's section
 
+//Madina's prompt
+router.post("/quest", 
+  isLoggedIn, 
+  async (req, res, next) => {
+    const prompt = req.body.prompt;
+    console.log("prompt:", prompt);
+    response = await axios.post(
+      "http://gracehopper.cs-i.brandeis.edu:3500/openai",
+      {
+        prompt:
+          "What could be a good Dungeons and Dragons quest for:" + prompt,
+      }
+    );
+    result = response.data.choices[0].message.content;
+    const message = new Prompt({
+      question: req.body.prompt,
+      category: "quest",
+      answer: result,
+      createdAt: new Date(),
+      userId: req.user._id,
+    });
+    await message.save();
+    res.render("response", { result });
+});
 
+// end of Madina's prompt
 
 
 router.get("/setting", async (req, res, next) => {
@@ -132,26 +157,6 @@ const getSetting = async (prompt) => {
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
-
-router.get("/quest", (req, res, next) => {
-  res.render("madinaPrompt");
-});
-
-router.post("/quest", async (req, res, next) => {
-  console.log("generating quest");
-  res.locals.prompt = req.body.prompt;
-  result = await get_quest(req.body.prompt);
-  console.log("Result:", result); //result is currently undefined :(
-  res.render("response", { result });
-});
-
-//TODO: must be implemented
-const get_quest = async (prompt) => {
-  const message = "What could be a DnD quest for:" + prompt;
-  const response = await ChatGPT.getChatGPTResponse(message);
-  console.log("Response:", response); //response is currently undefined :(
-  return response;
-};
 
 router.get("/prompt/byUser", isLoggedIn, async (req, res, next) => {
   let results = await Prompt.aggregate([
