@@ -61,10 +61,6 @@ router.post("/villain", isLoggedIn, async (req, res, next) => {
   res.render("response", { result });
 });
 
-router.get("/quest", (req, res, next) => {
-  res.render("madinaPrompt");
-});
-
 //Defne's prompt section
 router.get('/hero', (req, res, next) => {
   res.render('defnePrompt')
@@ -93,6 +89,10 @@ await axios.post('http://gracehopper.cs-i.brandeis.edu:3500/openai',
 )
 //end of Defne's section
 
+router.get("/quest", (req, res, next) => {
+  res.render("madinaPrompt");
+});
+
 //Madina's prompt
 router.post("/quest", 
   isLoggedIn, 
@@ -103,7 +103,7 @@ router.post("/quest",
       "http://gracehopper.cs-i.brandeis.edu:3500/openai",
       {
         prompt:
-          "What could be a good Dungeons and Dragons quest for:" + prompt,
+          "What could be a Dungeons and Dragons quest for:" + prompt,
       }
     );
     result = response.data.choices[0].message.content;
