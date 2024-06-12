@@ -1,4 +1,4 @@
-# Team Projects Repository
+# Team Projects for Fundamentals of Software Engineering
 
 ## Overview
 This repository contains various projects developed by our team. Each project demonstrates different aspects of web development and database management using various technologies. Below are the details of the included projects.
